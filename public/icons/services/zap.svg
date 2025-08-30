@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="zapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFEE66;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFDD00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CCAA00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="zapShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#886600;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#443300;stop-opacity:0.9" />
+    </linearGradient>
+    <radialGradient id="zapGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#FFFF99;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FFDD00;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  <!-- Outer Glow -->
+  <ellipse cx="50" cy="50" rx="35" ry="40" fill="url(#zapGlow)"/>
+  
+  <!-- 3D Shadow -->
+  <polygon points="47,12 62,45 50,45 53,88 38,55 50,55" fill="url(#zapShadow)"/>
+  
+  <!-- Main Lightning Bolt -->
+  <polygon points="45,10 60,43 48,43 51,86 36,53 48,53" fill="url(#zapGrad)" stroke="#FFEE66" stroke-width="1"/>
+  
+  <!-- Inner Highlights -->
+  <polygon points="45,10 55,35 50,35 52,60 42,45 48,45" fill="#FFFFFF" opacity="0.4"/>
+  
+  <!-- Electric Sparks -->
+  <circle cx="35" cy="30" r="2" fill="#FFFF99" opacity="0.8"/>
+  <circle cx="65" cy="25" r="1.5" fill="#FFFF99" opacity="0.6"/>
+  <circle cx="30" cy="70" r="1.5" fill="#FFFF99" opacity="0.7"/>
+  <circle cx="70" cy="75" r="2" fill="#FFFF99" opacity="0.8"/>
+  
+  <!-- Energy Lines -->
+  <line x1="25" y1="35" x2="30" y2="40" stroke="#FFDD00" stroke-width="2" opacity="0.6"/>
+  <line x1="70" y1="30" x2="75" y2="35" stroke="#FFDD00" stroke-width="2" opacity="0.6"/>
+  <line x1="25" y1="75" x2="30" y2="70" stroke="#FFDD00" stroke-width="2" opacity="0.6"/>
+  <line x1="70" y1="80" x2="75" y2="75" stroke="#FFDD00" stroke-width="2" opacity="0.6"/>
+</svg>
