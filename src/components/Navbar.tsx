@@ -133,6 +133,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Smooth scroll to top function
+  const scrollToTop = () => {
+    // Use requestAnimationFrame for smoother scrolling
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  };
+
   useEffect(() => {
     const currentIndex = navItems.findIndex(
       (item) => item.path === location.pathname
@@ -140,11 +151,25 @@ const Navbar = () => {
     if (currentIndex !== -1) {
       setActiveIndex(currentIndex);
     }
+
+    // Scroll to top when location changes (for direct URL access and navigation)
+    // Add a small delay to ensure the route change is complete
+    const timer = setTimeout(() => {
+      scrollToTop();
+    }, 50);
+
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
   const handleItemClick = (index: number, path: string) => {
     setActiveIndex(index);
     setIsMobileMenuOpen(false);
+
+    // Scroll to top smoothly when navigating
+    // Use a slightly longer delay for programmatic navigation
+    setTimeout(() => {
+      scrollToTop();
+    }, 150);
   };
 
   return (
