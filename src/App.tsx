@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import LoadingScreen from "./components/LoadingScreen";
 import Navbar from "./components/Navbar";
@@ -12,6 +18,33 @@ import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import CareersPage from "./pages/CareersPage";
 import ContactPage from "./pages/ContactPage";
+
+// Debug component to log route changes
+const RouteDebugger = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log("Route changed to:", location.pathname);
+  }, [location]);
+
+  return null;
+};
+
+// 404 Page Component
+const NotFoundPage = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="text-center">
+      <h1 className="text-6xl font-bold text-accent-500 mb-4">404</h1>
+      <p className="text-xl text-text-muted mb-8">Page Not Found</p>
+      <Link
+        to="/"
+        className="px-6 py-3 bg-accent-500 text-primary-900 rounded-lg hover:bg-accent-400 transition-colors"
+      >
+        Go Home
+      </Link>
+    </div>
+  </div>
+);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -81,6 +114,7 @@ function App() {
       </div>
 
       <Router>
+        <RouteDebugger />
         <AnimatePresence mode="wait">
           {isLoading ? (
             <LoadingScreen key="loading" />
@@ -96,6 +130,8 @@ function App() {
                   <Route path="/services" element={<ServicesPage />} />
                   <Route path="/careers" element={<CareersPage />} />
                   <Route path="/contact" element={<ContactPage />} />
+                  {/* Catch-all route for unmatched paths */}
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </main>
 
