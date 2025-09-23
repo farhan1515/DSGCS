@@ -1,5 +1,5 @@
-/* Import Google Fonts - must be first */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+/* Import Professional Fonts - SecurityMatterz Inspired */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -18,13 +18,14 @@ html {
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Manrope", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0f172a;
+  background: linear-gradient(135deg, #09165c 0%, #0d1f75 70%, #6b46c1 100%);
   overflow-x: hidden;
   cursor: default;
   overscroll-behavior: none; /* Prevent bounce scrolling */
+  min-height: 100vh;
 }
 
 /* Enhanced Glassmorphism Components */
@@ -59,8 +60,8 @@ body {
   }
 
   .hover-glow:hover {
-    box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2),
-      0 0 0 1px rgba(6, 182, 212, 0.1);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
   }
 
@@ -74,13 +75,13 @@ body {
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full;
+    @apply bg-gradient-to-b from-white to-gray-300 rounded-full;
     border: 1px solid transparent;
     background-clip: content-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply from-cyan-400 to-blue-400;
+    @apply from-gray-200 to-white;
   }
 
   /* Better backdrop blur support */
@@ -111,10 +112,10 @@ body {
 @keyframes glow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(6, 182, 212, 0.6);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
   }
 }
 
@@ -137,6 +138,36 @@ body {
   }
 }
 
+@keyframes rainbow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes cyber-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
 /* Optimized animation classes */
 .animate-float {
   animation: float 6s ease-in-out infinite;
@@ -156,14 +187,42 @@ body {
   animation: spin-slow 8s linear infinite;
 }
 
+.animate-rainbow {
+  animation: rainbow 4s ease-in-out infinite;
+}
+
+.animate-cyber-pulse {
+  animation: cyber-pulse 3s ease-in-out infinite;
+}
+
 /* Typography */
 .text-gradient {
   @apply bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent;
 }
 
 .text-cyber-glow {
-  text-shadow: 0 0 10px rgba(6, 182, 212, 0.8), 0 0 20px rgba(6, 182, 212, 0.6),
-    0 0 30px rgba(6, 182, 212, 0.4);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 10px rgba(124, 58, 237, 0.8),
+    0 0 20px rgba(124, 58, 237, 0.6), 0 0 30px rgba(124, 58, 237, 0.4);
+}
+
+.text-glow-teal {
+  text-shadow: 0 0 10px rgba(20, 184, 166, 0.8),
+    0 0 20px rgba(20, 184, 166, 0.6), 0 0 30px rgba(20, 184, 166, 0.4);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.8),
+    0 0 20px rgba(245, 158, 11, 0.6), 0 0 30px rgba(245, 158, 11, 0.4);
+}
+
+.text-glow-emerald {
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.8),
+    0 0 20px rgba(16, 185, 129, 0.6), 0 0 30px rgba(16, 185, 129, 0.4);
 }
 
 /* Performance optimizations */
@@ -174,7 +233,7 @@ body {
 
 /* Focus styles for accessibility */
 .focus-visible:focus {
-  @apply outline-none ring-2 ring-cyan-500 ring-opacity-50;
+  @apply outline-none ring-2 ring-white ring-opacity-50;
 }
 
 /* Loading screen styles */
@@ -191,7 +250,7 @@ body {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #06b6d4;
+  background: #ffffff;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
@@ -305,7 +364,7 @@ body {
   }
 }
 
-/* Cyber border effect */
+/* Enhanced Cyber border effects */
 .cyber-border {
   position: relative;
 }
@@ -315,11 +374,28 @@ body {
   position: absolute;
   inset: 0;
   padding: 2px;
-  background: linear-gradient(45deg, #06b6d4, #22d3ee, #67e8f9);
+  background: linear-gradient(45deg, #7c3aed, #8b5cf6, #a78bfa);
   border-radius: inherit;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: subtract;
   -webkit-mask-composite: xor;
+  animation: rainbow 4s ease-in-out infinite;
+}
+
+.cyber-border-purple::before {
+  background: linear-gradient(45deg, #7c3aed, #8b5cf6, #a78bfa);
+}
+
+.cyber-border-teal::before {
+  background: linear-gradient(45deg, #14b8a6, #2dd4bf, #5eead4);
+}
+
+.cyber-border-amber::before {
+  background: linear-gradient(45deg, #f59e0b, #fbbf24, #fcd34d);
+}
+
+.cyber-border-emerald::before {
+  background: linear-gradient(45deg, #10b981, #34d399, #6ee7b7);
 }
 
 /* Additional performance optimizations */
@@ -340,4 +416,237 @@ button:active,
 a:active,
 [role="button"]:active {
   transform: scale(0.98);
+}
+
+/* SecurityMatterz-Inspired Design System */
+
+/* Professional Typography */
+.font-display {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.font-body {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.font-heading {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Cute fonts used only on Home and About headings/body */
+.font-cute {
+  font-family: "Quicksand", "Space Grotesk", "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.font-cute-body {
+  font-family: "Nunito", "Manrope", "Inter", sans-serif;
+  font-weight: 500;
+}
+
+/* DSGCS Brand-Matched Gradients - Based on #1D2F79 */
+.bg-gradient-cyber {
+  background: linear-gradient(
+      135deg,
+      rgba(15, 23, 41, 0.95) 0%,
+      rgba(29, 47, 121, 0.9) 25%,
+      rgba(42, 63, 149, 0.85) 50%,
+      rgba(56, 78, 176, 0.8) 75%,
+      rgba(72, 95, 205, 0.75) 100%
+    ),
+    radial-gradient(
+      circle at 30% 40%,
+      rgba(29, 47, 121, 0.2) 0%,
+      rgba(42, 63, 149, 0.15) 50%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% 60%,
+      rgba(72, 95, 205, 0.15) 0%,
+      rgba(96, 120, 230, 0.1) 50%,
+      transparent 70%
+    );
+  background-attachment: fixed;
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(
+      145deg,
+      rgba(15, 23, 41, 0.98) 0%,
+      rgba(29, 47, 121, 0.95) 30%,
+      rgba(42, 63, 149, 0.9) 60%,
+      rgba(56, 78, 176, 0.85) 100%
+    ),
+    radial-gradient(
+      ellipse at top left,
+      rgba(29, 47, 121, 0.25) 0%,
+      rgba(42, 63, 149, 0.15) 40%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(16, 185, 129, 0.18) 0%,
+      rgba(34, 197, 94, 0.12) 40%,
+      transparent 70%
+    );
+}
+
+.bg-gradient-cta {
+  background: linear-gradient(
+    135deg,
+    #1d2f79 0%,
+    #2a3f95 25%,
+    #3751b8 50%,
+    #4863db 75%,
+    #5975fe 100%
+  );
+  box-shadow: 0 4px 15px rgba(29, 47, 121, 0.4);
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(
+    135deg,
+    #5975fe 0%,
+    #4863db 25%,
+    #3751b8 50%,
+    #2a3f95 75%,
+    #1d2f79 100%
+  );
+}
+
+/* DSGCS Brand Text Gradients */
+.cyber-gradient-text {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f1f5f9 25%,
+    #e2e8f0 50%,
+    #cbd5e1 75%,
+    #94a3b8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.text-gradient-blue {
+  background: linear-gradient(
+    135deg,
+    #5975fe 0%,
+    #4863db 25%,
+    #3751b8 50%,
+    #2a3f95 75%,
+    #1d2f79 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-teal {
+  background: linear-gradient(
+    135deg,
+    #34d399 0%,
+    #10b981 25%,
+    #059669 50%,
+    #047857 75%,
+    #065f46 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* DSGCS Brand Enhanced Shadows */
+.shadow-glow-purple {
+  box-shadow: 0 0 20px rgba(89, 117, 254, 0.4),
+    0 4px 25px rgba(72, 99, 219, 0.3), 0 8px 35px rgba(55, 81, 184, 0.2);
+}
+
+.shadow-glow-purple-lg {
+  box-shadow: 0 0 30px rgba(89, 117, 254, 0.5),
+    0 10px 40px rgba(72, 99, 219, 0.4), 0 20px 60px rgba(55, 81, 184, 0.3);
+}
+
+.shadow-glow-blue {
+  box-shadow: 0 0 20px rgba(29, 47, 121, 0.4), 0 4px 25px rgba(42, 63, 149, 0.3),
+    0 8px 35px rgba(55, 81, 184, 0.2);
+}
+
+/* Professional Glass Effects */
+.glass-morphism {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* DSGCS Loading Screen */
+.loading-gradient {
+  background: linear-gradient(
+    135deg,
+    #0f1729 0%,
+    #1d2f79 25%,
+    #2a3f95 50%,
+    #3751b8 75%,
+    #4863db 100%
+  );
+}
+
+/* DSGCS Brand Color Utilities */
+.text-brand-primary {
+  color: #1d2f79;
+}
+
+.text-brand-light {
+  color: #5975fe;
+}
+
+.text-brand-emerald {
+  color: #10b981;
+}
+
+.bg-brand-primary {
+  background-color: #1d2f79;
+}
+
+.bg-brand-light {
+  background-color: #5975fe;
+}
+
+.border-brand-primary {
+  border-color: #1d2f79;
+}
+
+/* Professional Accent Gradients */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #ffffff 0%, #5975fe 50%, #1d2f79 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(
+    135deg,
+    #6ee7b7 0%,
+    #34d399 25%,
+    #10b981 50%,
+    #059669 75%,
+    #047857 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

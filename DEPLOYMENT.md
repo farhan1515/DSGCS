@@ -1,4 +1,4 @@
-# ASITLOG Deployment Guide
+# DSGCS Deployment Guide
 
 ## Fixing 404 Errors on Direct URL Access
 

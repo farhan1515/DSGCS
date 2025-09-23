@@ -7,7 +7,17 @@ import React, {
 } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Shield, Home, User, Briefcase, Phone } from "lucide-react";
+import {
+  Menu,
+  X,
+  Shield,
+  Home,
+  User,
+  Briefcase,
+  Phone,
+  Settings,
+  BookOpen,
+} from "lucide-react";
 
 // LimelightNav Component with CyberCore Integration
 type NavItem = {
@@ -25,7 +35,7 @@ const LimelightNav = ({
 }: {
   items: NavItem[];
   activeIndex: number;
-  onItemClick: (index: number, path: string) => void;
+  onItemClick: (index: number) => void;
   className?: string;
 }) => {
   const [isReady, setIsReady] = useState(false);
@@ -55,15 +65,15 @@ const LimelightNav = ({
 
   return (
     <nav
-      className={`relative inline-flex items-center h-16 rounded-2xl px-3 ${className}`}
+      className={`relative inline-flex items-center h-12 rounded-2xl px-2 ${className}`}
     >
       {items.map((item, index) => (
         <Link
           key={item.id}
           to={item.path}
           ref={(el) => (navItemRefs.current[index] = el)}
-          className="relative z-20 flex h-full cursor-pointer items-center justify-center px-6 py-2 rounded-xl transition-all duration-300 group"
-          onClick={() => onItemClick(index, item.path)}
+          className="relative z-20 flex h-full cursor-pointer items-center justify-center px-4 py-1.5 rounded-xl transition-all duration-300 group"
+          onClick={() => onItemClick(index)}
           aria-label={item.label}
         >
           <div className="flex flex-col items-center space-y-1">
@@ -118,9 +128,26 @@ const Navbar = () => {
 
   const navItems: NavItem[] = [
     { id: "home", icon: <Home />, label: "Home", path: "/" },
-    { id: "about", icon: <User />, label: "About", path: "/about" },
-    { id: "services", icon: <Shield />, label: "Services", path: "/services" },
-    { id: "careers", icon: <Briefcase />, label: "Careers", path: "/careers" },
+    { id: "about", icon: <User />, label: "About Us", path: "/about" },
+    {
+      id: "solutions",
+      icon: <Shield />,
+      label: "Solutions",
+      path: "/solutions",
+    },
+    {
+      id: "consultation",
+      icon: <Settings />,
+      label: "Consultation",
+      path: "/consultation",
+    },
+    {
+      id: "professional",
+      icon: <Briefcase />,
+      label: "Professional Services",
+      path: "/professional",
+    },
+    { id: "academy", icon: <BookOpen />, label: "Academy", path: "/academy" },
     { id: "contact", icon: <Phone />, label: "Contact", path: "/contact" },
   ];
 
@@ -161,7 +188,7 @@ const Navbar = () => {
     return () => clearTimeout(timer);
   }, [location.pathname]);
 
-  const handleItemClick = (index: number, path: string) => {
+  const handleItemClick = (index: number) => {
     setActiveIndex(index);
     setIsMobileMenuOpen(false);
 
@@ -174,18 +201,18 @@ const Navbar = () => {
 
   return (
     <motion.div
-      className="fixed top-6 left-0 right-0 z-50 flex justify-center transition-all duration-500"
+      className="fixed top-3 left-0 right-0 z-50 flex justify-center transition-all duration-500"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       {/* Unified Navigation Container */}
       <div
-        className={`cyber-card rounded-2xl p-4 transition-all duration-500 shadow-cyber-lg ${
+        className={`cyber-card rounded-2xl p-2.5 transition-all duration-500 shadow-cyber-lg ${
           isScrolled ? "scale-95" : "scale-100"
         }`}
       >
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center space-x-4">
           {/* Logo Section */}
           <Link to="/">
             <motion.div
@@ -193,35 +220,30 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <motion.div
-                className="w-10 h-10 bg-gradient-accent rounded-full flex items-center justify-center shadow-glow relative overflow-hidden"
+              <motion.img
+                src="/images/dsgcs.png"
+                alt="DSGCS Logo"
+                className="w-16 h-18 object-contain drop-shadow-lg filter brightness-110"
                 animate={{
                   rotateY: [0, 360],
                 }}
                 transition={{
                   rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
                 }}
-              >
-                <Shield className="w-5 h-5 text-primary-900 drop-shadow-lg" />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
-                  animate={{ x: [-100, 100] }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-              </motion.div>
+              />
               <div className="hidden md:block">
                 <motion.span
                   className="text-lg font-bold cyber-gradient-text"
+                  style={{ fontFamily: '"Inter", "Poppins", sans-serif' }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  ASITLOG
+                  DSGCS
                 </motion.span>
-                <div className="text-xs text-text-muted font-medium">
-                  Cybersecurity Excellence
+                <div
+                  className="text-xs text-text-muted font-medium"
+                  style={{ fontFamily: '"Inter", sans-serif' }}
+                >
+                  Digital Security Gateway Consulting Services
                 </div>
               </div>
             </motion.div>
@@ -291,7 +313,7 @@ const Navbar = () => {
                       ? "bg-accent-500/10 border border-accent-500/30 text-accent-500"
                       : "text-text-muted hover:text-accent-400 hover:bg-accent-500/5"
                   }`}
-                  onClick={() => handleItemClick(index, item.path)}
+                  onClick={() => handleItemClick(index)}
                 >
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}

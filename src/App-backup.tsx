@@ -1,29 +1,29 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Link,
   useLocation,
 } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-
-// Import working components
 import LoadingScreen from "./components/LoadingScreen";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SmoothScroll from "./components/SmoothScroll";
 
-// Import working pages
+// Pages
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
+import ServicesPage from "./pages/ServicesPage";
+import CareersPage from "./pages/CareersPage";
 import ContactPage from "./pages/ContactPage";
-
-// Import actual service pages - testing if they work
 import Solutions from "./pages/Solutions";
 import ConsultationServices from "./pages/ConsultationServices";
 import ProfessionalServices from "./pages/ProfessionalServices";
 import CybersecurityAcademy from "./pages/CybersecurityAcademy";
 
-// Route debugger for troubleshooting
+// Debug component to log route changes
 const RouteDebugger = () => {
   const location = useLocation();
 
@@ -34,26 +34,25 @@ const RouteDebugger = () => {
   return null;
 };
 
-// 404 page
 const NotFoundPage = () => (
-  <div className="min-h-screen flex flex-col items-center justify-center text-center text-white bg-gradient-contact pt-24">
+  <div className="min-h-screen flex flex-col items-center justify-center text-center text-white bg-gradient-contact">
     <h1 className="text-6xl font-bold text-accent-400 mb-4">404</h1>
     <p className="text-xl mb-8">Page Not Found</p>
-    <a
-      href="/"
+    <Link
+      to="/"
       className="px-6 py-3 bg-accent-500 text-primary-900 rounded-lg hover:bg-accent-400 transition-colors"
     >
       Go Home
-    </a>
+    </Link>
   </div>
 );
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false);
+      setIsLoading(false);
     }, 3500);
     return () => clearTimeout(timer);
   }, []);
@@ -61,16 +60,19 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-contact text-text-primary overflow-x-hidden relative">
       <Router>
-        <RouteDebugger />
+        <RouteDebugger /> {/* Add the debugger */}
         <AnimatePresence mode="wait">
-          {loading && <LoadingScreen key="loading" />}
-          {!loading && (
+          {isLoading && <LoadingScreen key="loading" />}
+          {!isLoading && (
             <div key="main" className="relative z-10">
+              <SmoothScroll />
               <Navbar />
+
               <main>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/about" element={<AboutPage />} />
+                  <Route path="/services" element={<ServicesPage />} />
                   <Route path="/solutions" element={<Solutions />} />
                   <Route
                     path="/consultation"
@@ -81,10 +83,13 @@ function App() {
                     element={<ProfessionalServices />}
                   />
                   <Route path="/academy" element={<CybersecurityAcademy />} />
+                  <Route path="/careers" element={<CareersPage />} />
                   <Route path="/contact" element={<ContactPage />} />
+                  {/* Catch-all route for unmatched paths */}
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </main>
+
               <Footer />
             </div>
           )}

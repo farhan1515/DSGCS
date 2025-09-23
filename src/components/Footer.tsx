@@ -1,6 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { Facebook, Linkedin, Twitter, Fingerprint } from "lucide-react";
+import { Facebook, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
@@ -10,7 +9,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative py-12 px-4 bg-gradient-to-b from-transparent to-black/50">
+    <footer className="relative py-12 px-4 bg-gradient-contact">
       {/* Animated Background Text */}
       <div className="absolute inset-0 overflow-hidden opacity-5">
         <motion.div
@@ -22,7 +21,7 @@ const Footer = () => {
             ease: "linear",
           }}
         >
-          ASITLOG • DIGITAL PROTECTION • CYBER DEFENSE •
+          DSGCS • DIGITAL SECURITY GATEWAY • CONSULTING SERVICES •
         </motion.div>
       </div>
 
@@ -31,17 +30,37 @@ const Footer = () => {
         <div className="text-center">
           {/* Logo */}
           <motion.div
-            className="flex items-center justify-center space-x-3 mb-8"
+            className="flex items-center justify-center space-x-4 mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="w-12 h-12 bg-gradient-to-r from-[#ff3333] to-[#ff6b35] rounded-xl flex items-center justify-center">
-              <Fingerprint className="w-7 h-7 text-white" />
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              ASITLOG
+            <motion.img
+              src="/images/dsgcs.png"
+              alt="DSGCS Logo"
+              className="w-20 h-20 object-contain drop-shadow-lg filter brightness-110"
+              animate={{
+                rotateY: [0, 360],
+              }}
+              transition={{
+                rotateY: { duration: 10, repeat: Infinity, ease: "linear" },
+              }}
+            />
+            <span
+              className="text-3xl font-bold"
+              style={{
+                fontFamily: '"Inter", "Poppins", sans-serif',
+                background:
+                  "linear-gradient(135deg, #ffffff 0%, #F8FAFC 50%, #E2E8F0 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                textShadow: "0 2px 10px rgba(255, 255, 255, 0.3)",
+                filter: "contrast(1.2) brightness(1.2)",
+              }}
+            >
+              DSGCS
             </span>
           </motion.div>
 
@@ -57,7 +76,19 @@ const Footer = () => {
               <motion.a
                 key={index}
                 href={social.href}
-                className="w-12 h-12 glass-card rounded-xl flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 border border-white/10 hover:border-white/20"
+                className="w-12 h-12 glass-card rounded-xl flex items-center justify-center text-gray-400 transition-all duration-300 border border-white/10"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#10B981";
+                  e.currentTarget.style.borderColor = "rgba(16, 185, 129, 0.4)";
+                  e.currentTarget.style.boxShadow =
+                    "0 0 15px rgba(16, 185, 129, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "#9ca3af";
+                  e.currentTarget.style.borderColor =
+                    "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={social.label}
@@ -77,7 +108,17 @@ const Footer = () => {
           >
             <a
               href="#privacy"
-              className="text-gray-400 hover:text-white transition-colors duration-300 font-medium"
+              className="text-gray-400 transition-colors duration-300 font-medium"
+              style={{ textDecoration: "none" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#10B981";
+                e.currentTarget.style.textShadow =
+                  "0 0 10px rgba(16, 185, 129, 0.5)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "#9ca3af";
+                e.currentTarget.style.textShadow = "none";
+              }}
             >
               Privacy Policy
             </a>
@@ -91,8 +132,15 @@ const Footer = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-400 text-sm">
-              Copyright © 2025 ASITLOG. All rights reserved.
+            <p
+              className="text-sm"
+              style={{
+                color: "#F1F5F9",
+                textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+              }}
+            >
+              Copyright © 2025 DSGCS (Digital Security Gateway Consulting
+              Services). All rights reserved.
             </p>
           </motion.div>
         </div>

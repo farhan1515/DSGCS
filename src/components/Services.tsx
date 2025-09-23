@@ -28,9 +28,9 @@ const Services = () => {
         "SIEM Management",
         "Incident Response",
       ],
-      gradient: "from-accent-500 to-accent-300",
-      iconColor: "text-accent-500",
-      borderColor: "border-accent-500/20",
+      gradient: "from-primary-900 to-primary-800",
+      iconColor: "text-primary-900",
+      borderColor: "border-primary-900/20",
       hoverImage:
         "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     },
@@ -45,9 +45,9 @@ const Services = () => {
         "Security Roadmap",
         "GAP Analysis",
       ],
-      gradient: "from-cta-500 to-cta-300",
-      iconColor: "text-cta-500",
-      borderColor: "border-cta-500/20",
+      gradient: "from-primary-800 to-primary-700",
+      iconColor: "text-primary-800",
+      borderColor: "border-primary-800/20",
       hoverImage:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     },
@@ -62,9 +62,9 @@ const Services = () => {
         "CISA Programs",
         "Hands-on Labs",
       ],
-      gradient: "from-success-500 to-success-300",
-      iconColor: "text-success-500",
-      borderColor: "border-success-500/20",
+      gradient: "from-primary-700 to-primary-600",
+      iconColor: "text-primary-700",
+      borderColor: "border-primary-700/20",
       hoverImage:
         "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     },
@@ -79,9 +79,9 @@ const Services = () => {
         "PAM Systems",
         "Zero Trust Architecture",
       ],
-      gradient: "from-accent-400 to-accent-200",
-      iconColor: "text-accent-400",
-      borderColor: "border-accent-400/20",
+      gradient: "from-primary-600 to-primary-500",
+      iconColor: "text-primary-600",
+      borderColor: "border-primary-600/20",
       hoverImage:
         "https://images.unsplash.com/photo-1518186233392-c232efbf2373?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     },
@@ -96,9 +96,9 @@ const Services = () => {
         "SEO Optimization",
         "Security Integration",
       ],
-      gradient: "from-accent-300 to-accent-100",
-      iconColor: "text-accent-300",
-      borderColor: "border-accent-300/20",
+      gradient: "from-primary-500 to-primary-400",
+      iconColor: "text-primary-500",
+      borderColor: "border-primary-500/20",
       hoverImage:
         "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     },
@@ -113,9 +113,9 @@ const Services = () => {
         "Cross-Platform",
         "UI/UX Design",
       ],
-      gradient: "from-cta-300 to-cta-100",
-      iconColor: "text-cta-300",
-      borderColor: "border-cta-300/20",
+      gradient: "from-primary-400 to-primary-300",
+      iconColor: "text-primary-400",
+      borderColor: "border-primary-400/20",
       hoverImage:
         "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     },
@@ -130,9 +130,9 @@ const Services = () => {
         "Predictive Analysis",
         "IOC Monitoring",
       ],
-      gradient: "from-cta-400 to-cta-200",
-      iconColor: "text-cta-400",
-      borderColor: "border-cta-400/20",
+      gradient: "from-primary-300 to-purple-600",
+      iconColor: "text-primary-300",
+      borderColor: "border-primary-300/20",
       hoverImage:
         "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     },
@@ -147,9 +147,9 @@ const Services = () => {
         "Data Classification",
         "Encryption Solutions",
       ],
-      gradient: "from-success-400 to-success-200",
-      iconColor: "text-success-400",
-      borderColor: "border-success-400/20",
+      gradient: "from-primary-200 to-purple-500",
+      iconColor: "text-primary-200",
+      borderColor: "border-primary-200/20",
       hoverImage:
         "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     },
@@ -157,16 +157,16 @@ const Services = () => {
 
   return (
     <section id="services" className="py-24 px-4 relative overflow-hidden">
-      {/* Enhanced Background */}
-      <div className="absolute inset-0 bg-gradient-primary" />
+      {/* Enhanced Background with Section-Specific Gradient */}
+      <div className="absolute inset-0 bg-gradient-contact" />
       <div className="absolute inset-0">
         <div
           className="absolute top-0 left-0 w-full h-full opacity-[0.02]"
           style={{
             backgroundImage: `
-              radial-gradient(circle at 20% 50%, rgba(0, 255, 247, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(255, 59, 59, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 40% 80%, rgba(0, 255, 171, 0.3) 0%, transparent 50%)
+              radial-gradient(circle at 20% 50%, rgba(9, 22, 92, 0.4) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(13, 31, 117, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, rgba(16, 37, 130, 0.3) 0%, transparent 50%)
             `,
           }}
         />
@@ -188,8 +188,8 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Shield className="w-5 h-5 text-accent-500 mr-2" />
-            <span className="text-accent-500 font-semibold">
+            <Shield className="w-5 h-5 text-purple-500 mr-2" />
+            <span className="text-purple-500 font-semibold">
               Premium Services
             </span>
           </motion.div>
@@ -343,22 +343,22 @@ const Services = () => {
             {
               label: "Threats Detected",
               value: "500K+",
-              color: "text-cta-500",
+              color: "text-primary-900",
             },
             {
               label: "Clients Protected",
               value: "1000+",
-              color: "text-accent-500",
+              color: "text-primary-700",
             },
             {
               label: "Security Experts",
               value: "150+",
-              color: "text-success-500",
+              color: "text-primary-500",
             },
             {
               label: "Projects Delivered",
               value: "2000+",
-              color: "text-accent-400",
+              color: "text-purple-600",
             },
           ].map((stat, index) => (
             <motion.div
@@ -399,7 +399,7 @@ const Services = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <motion.button
-            className="group bg-gradient-cta text-text-primary px-8 py-4 rounded-2xl font-semibold text-lg flex items-center space-x-3 hover:shadow-glow-red-lg transition-all duration-300 mx-auto cyber-border-red"
+            className="group bg-gradient-cta text-text-primary px-8 py-4 rounded-2xl font-semibold text-lg flex items-center space-x-3 hover:shadow-glow-purple-lg transition-all duration-300 mx-auto cyber-border-purple"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >

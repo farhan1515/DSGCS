@@ -1,11 +1,11 @@
 import React, { useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, OrbitControls, Text } from "@react-three/drei";
+import { Points, PointMaterial } from "@react-three/drei";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield } from "lucide-react";
 import * as THREE from "three";
 
-// 3D Particle System Component - Optimized with CyberCore colors
+// 3D Particle System Component
 function ParticleField() {
   const ref = useRef<THREE.Points>(null);
 
@@ -29,19 +29,14 @@ function ParticleField() {
   });
 
   return (
-    <Points
-      ref={ref}
-      positions={particlesPosition}
-      stride={3}
-      frustumCulled={true}
-    >
+    <Points ref={ref} positions={particlesPosition} stride={3} frustumCulled>
       <PointMaterial
         transparent
         color="#00FFF7"
         size={
           typeof window !== "undefined" && window.innerWidth < 768 ? 0.06 : 0.08
         }
-        sizeAttenuation={true}
+        sizeAttenuation
         depthWrite={false}
         opacity={0.4}
       />
@@ -49,7 +44,6 @@ function ParticleField() {
   );
 }
 
-// Fallback component for 3D loading
 function Fallback() {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
@@ -58,11 +52,9 @@ function Fallback() {
   );
 }
 
-// Utility function for class names
 const cn = (...classes: (string | undefined)[]) =>
   classes.filter(Boolean).join(" ");
 
-// Custom SVG Icon Component
 const SVGIcon = ({
   iconName,
   color,
@@ -92,84 +84,82 @@ const SVGIcon = ({
   );
 };
 
-// Spinning Logos Component - ASITLOG Style
 const SpinningLogos: React.FC = () => {
   const radiusToCenterOfIcons = 160;
   const iconWrapperWidth = 60;
 
   const toRadians = (degrees: number): number => (Math.PI / 180) * degrees;
 
-  // Service icons with enhanced 3D visibility
+  // Map to available icons in public/icons/services
   const serviceLogos = [
     {
-      iconName: "shield",
+      iconName: "application-security",
       color: "#00FFF7",
-      name: "MSS",
-      glow: "shadow-accent-500/50",
+      name: "AppSec",
+      glow: "shadow-glow-purple",
       bgGradient: "from-accent-500/30 to-accent-300/30",
       borderColor: "border-accent-500/50",
     },
     {
-      iconName: "eye",
+      iconName: "identity-and-access-management-svgrepo-com",
       color: "#FF3B3B",
-      name: "Consultation",
-      glow: "shadow-cta-500/50",
+      name: "IAM",
+      glow: "shadow-glow-purple",
       bgGradient: "from-cta-500/30 to-cta-300/30",
-      borderColor: "border-cta-500/50",
+      borderColor: "border-accent-500/50",
     },
     {
-      iconName: "users",
+      iconName: "network-security",
       color: "#00FF00",
-      name: "Academy",
-      glow: "shadow-success-500/50",
+      name: "Network",
+      glow: "shadow-glow-purple",
       bgGradient: "from-success-500/30 to-success-300/30",
-      borderColor: "border-success-500/50",
+      borderColor: "border-accent-500/50",
     },
     {
-      iconName: "lock",
+      iconName: "secure-data",
       color: "#AA00FF",
-      name: "Professional",
-      glow: "shadow-purple-500/50",
+      name: "Data",
+      glow: "shadow-glow-purple",
       bgGradient: "from-purple-500/30 to-purple-300/30",
-      borderColor: "border-purple-500/50",
+      borderColor: "border-accent-500/50",
     },
     {
-      iconName: "globe",
+      iconName: "database-security",
       color: "#007BFF",
-      name: "Web Design",
-      glow: "shadow-blue-500/50",
+      name: "DB",
+      glow: "shadow-glow-purple",
       bgGradient: "from-blue-500/30 to-blue-300/30",
-      borderColor: "border-blue-500/50",
+      borderColor: "border-accent-500/50",
     },
     {
-      iconName: "smartphone",
+      iconName: "infrastructure",
       color: "#FF007F",
-      name: "Mobile App",
-      glow: "shadow-pink-500/50",
+      name: "Infra",
+      glow: "shadow-glow-purple",
       bgGradient: "from-pink-500/30 to-pink-300/30",
-      borderColor: "border-pink-500/50",
+      borderColor: "border-accent-500/50",
     },
     {
-      iconName: "zap",
+      iconName: "web-development (1)",
       color: "#FFD700",
-      name: "Threat Intel",
-      glow: "shadow-yellow-500/50",
+      name: "Web",
+      glow: "shadow-glow-purple",
       bgGradient: "from-yellow-500/30 to-yellow-300/30",
-      borderColor: "border-yellow-500/50",
+      borderColor: "border-accent-500/50",
     },
     {
-      iconName: "database",
+      iconName: "mobiledev",
       color: "#00CC00",
-      name: "Data Protection",
-      glow: "shadow-green-500/50",
+      name: "Mobile",
+      glow: "shadow-glow-purple",
       bgGradient: "from-green-500/30 to-green-300/30",
-      borderColor: "border-green-500/50",
+      borderColor: "border-accent-500/50",
     },
   ];
 
   return (
     <div className="flex justify-center items-center w-full h-full relative">
-      {/* Seamless integration - no container */}
       <div
         style={{
           width: radiusToCenterOfIcons * 2 + iconWrapperWidth,
@@ -177,15 +167,10 @@ const SpinningLogos: React.FC = () => {
         }}
         className="relative"
       >
-        {/* Orbiting Service Icons */}
         <motion.div
           className="absolute inset-0"
           animate={{ rotate: 360 }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         >
           {serviceLogos.map((logo, index) => {
             const angle = (360 / serviceLogos.length) * index;
@@ -210,11 +195,7 @@ const SpinningLogos: React.FC = () => {
                 )}
                 animate={{ rotate: -360 }}
                 transition={{
-                  rotate: {
-                    duration: 25,
-                    repeat: Infinity,
-                    ease: "linear",
-                  },
+                  rotate: { duration: 25, repeat: Infinity, ease: "linear" },
                   default: {
                     delay: index * 0.1 + 0.5,
                     duration: 0.6,
@@ -253,7 +234,6 @@ const SpinningLogos: React.FC = () => {
           >
             <Shield className="w-16 h-16 md:w-18 md:h-18 text-primary-900 drop-shadow-2xl filter brightness-110" />
 
-            {/* Enhanced Pulse rings */}
             <motion.div
               className="absolute inset-0 border-4 border-accent-500/60 rounded-full"
               animate={{
@@ -271,14 +251,9 @@ const SpinningLogos: React.FC = () => {
                 ease: "easeInOut",
               }}
             />
-
-            {/* Outer pulse ring */}
             <motion.div
               className="absolute inset-0 border-2 border-accent-400/40 rounded-full"
-              animate={{
-                scale: [1, 1.6, 1],
-                opacity: [0.6, 0, 0.6],
-              }}
+              animate={{ scale: [1, 1.6, 1], opacity: [0.6, 0, 0.6] }}
               transition={{
                 duration: 3,
                 repeat: Infinity,
@@ -286,8 +261,6 @@ const SpinningLogos: React.FC = () => {
                 delay: 0.5,
               }}
             />
-
-            {/* Enhanced Shine effect */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12"
               animate={{ x: [-200, 200] }}
@@ -301,15 +274,11 @@ const SpinningLogos: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Enhanced Circular Text Ring */}
+        {/* Circular Text Ring */}
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           animate={{ rotate: -360 }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         >
           <div className="relative w-full h-full">
             {[...Array(40)].map((_, i) => {
@@ -339,7 +308,7 @@ const SpinningLogos: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Enhanced Background glow effects */}
+        {/* Background glows */}
         <div className="absolute inset-0 -z-10">
           {serviceLogos.map((logo, index) => {
             const angle = (360 / serviceLogos.length) * index;
@@ -356,10 +325,7 @@ const SpinningLogos: React.FC = () => {
                   background: `radial-gradient(circle, ${logo.color}40, transparent)`,
                 }}
                 className="absolute w-20 h-20 rounded-full blur-2xl opacity-15"
-                animate={{
-                  scale: [1, 1.6, 1],
-                  opacity: [0.1, 0.4, 0.1],
-                }}
+                animate={{ scale: [1, 1.6, 1], opacity: [0.1, 0.4, 0.1] }}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
@@ -381,24 +347,18 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-32 md:pt-24"
     >
-      {/* CyberCore Background - Match LoadingScreen */}
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-cyber" />
 
-      {/* Enhanced Background Elements - Match theme */}
+      {/* Decorative elements */}
       <div className="fixed inset-0 pointer-events-none">
-        {/* CyberCore Gradient Orbs - Match LoadingScreen colors */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cta-500/10 rounded-full blur-3xl animate-float" />
         <div className="absolute top-3/4 left-3/4 w-48 h-48 bg-success-500/10 rounded-full blur-2xl" />
-
-        {/* Enhanced Grid Pattern - Match theme */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `
-              linear-gradient(rgba(0, 255, 247, 0.2) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 255, 247, 0.2) 1px, transparent 1px)
-            `,
+            backgroundImage: `linear-gradient(rgba(0, 255, 247, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 247, 0.2) 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
@@ -424,16 +384,14 @@ const Hero = () => {
         </Canvas>
       </div>
 
-      {/* Main Content - Two Column Layout */}
+      {/* Main Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-        {/* Left: Text Content */}
         <motion.div
           className="flex-1 text-left max-w-xl space-y-6"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Main Tagline */}
           <motion.h1
             className="text-2xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight"
             initial={{ opacity: 0, y: 20 }}
@@ -449,7 +407,6 @@ const Hero = () => {
             </span>
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             className="text-base md:text-lg text-text-muted max-w-2xl leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
@@ -460,7 +417,6 @@ const Hero = () => {
             detection and 24/7 monitoring for enterprise protection.
           </motion.p>
 
-          {/* Enhanced CTA */}
           <motion.div
             className="pt-6"
             initial={{ opacity: 0, y: 20 }}
@@ -468,7 +424,7 @@ const Hero = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             <motion.button
-              className="group bg-gradient-cta text-text-primary px-8 py-4 rounded-2xl font-semibold text-lg flex items-center space-x-3 hover:shadow-glow-red-lg transition-all duration-300 mx-auto md:mx-0 cyber-border-red"
+              className="group bg-gradient-cta text-text-primary px-8 py-4 rounded-2xl font-semibold text-lg flex items-center space-x-3 transition-all duration-300 mx-auto md:mx-0 shadow-glow-purple-lg"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -477,7 +433,6 @@ const Hero = () => {
             </motion.button>
           </motion.div>
 
-          {/* Trust Indicators */}
           <motion.div
             className="flex items-center space-x-8 pt-8 text-sm text-text-muted"
             initial={{ opacity: 0 }}
@@ -485,21 +440,20 @@ const Hero = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
           >
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse" />
               <span>ISO 27001 Certified</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-accent-500 rounded-full animate-pulse" />
               <span>500+ Clients</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-cta-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-cta-500 rounded-full animate-pulse" />
               <span>99.9% Uptime</span>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Right: Spinning Service Logos */}
         <motion.div
           className="flex-1 w-full h-[500px] md:h-[600px] relative"
           initial={{ opacity: 0, x: 50 }}
@@ -510,7 +464,6 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block"
         initial={{ opacity: 0 }}

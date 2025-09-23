@@ -1,11 +1,10 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { Shield } from "lucide-react";
+import ShinyText from "./ShinyText";
 
 const LoadingScreen = () => {
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-cyber"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-contact"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -15,8 +14,10 @@ const LoadingScreen = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-accent-400/30 rounded-full"
+            className="absolute w-1 h-1 rounded-full"
             style={{
+              background: `rgba(13, 30, 111, 0.4)`,
+              boxShadow: "0 0 8px rgba(13, 30, 111, 0.3)",
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
@@ -40,73 +41,115 @@ const LoadingScreen = () => {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        {/* Enhanced 3D Logo */}
+        {/* DSGCS Logo - Clean and Independent */}
         <div className="relative">
-          <motion.div
-            className="w-28 h-28 bg-gradient-accent rounded-3xl flex items-center justify-center shadow-glow relative overflow-hidden"
+          <motion.img
+            src="/images/dsgcs.png"
+            alt="DSGCS Logo"
+            className="w-48 h-48 object-contain drop-shadow-2xl filter brightness-110"
             animate={{
               rotateY: [0, 360],
+              scale: [1, 1.1, 1],
             }}
             transition={{
               rotateY: { duration: 4, repeat: Infinity, ease: "linear" },
+              scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
             }}
-          >
-            <Shield className="w-14 h-14 text-white drop-shadow-lg" />
+          />
 
-            {/* Shine effect */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
-              animate={{ x: [-150, 150] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "linear",
-                repeatDelay: 1,
-              }}
-            />
-          </motion.div>
-
-          {/* Pulsing rings */}
+          {/* Professional Pulse Rings - Using Brand Color #0D1E6F */}
           <motion.div
-            className="absolute -inset-4 border-2 border-accent-400/50 rounded-3xl"
+            className="absolute inset-0 border-2 rounded-full"
+            style={{ borderColor: "rgba(13, 30, 111, 0.4)" }}
             animate={{
-              scale: [1, 1.3, 1],
-              opacity: [1, 0, 1],
+              scale: [1, 1.5, 1],
+              opacity: [0.6, 0, 0.6],
             }}
             transition={{
-              duration: 2,
+              duration: 3,
               repeat: Infinity,
               ease: "easeInOut",
             }}
           />
           <motion.div
-            className="absolute -inset-2 border border-accent-300/30 rounded-3xl"
+            className="absolute inset-0 border rounded-full"
+            style={{ borderColor: "rgba(13, 30, 111, 0.25)" }}
             animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.5, 0, 0.5],
+              scale: [1, 1.8, 1],
+              opacity: [0.4, 0, 0.4],
             }}
             transition={{
-              duration: 2,
+              duration: 3,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 0.5,
+              delay: 1,
+            }}
+          />
+          <motion.div
+            className="absolute inset-0 border rounded-full"
+            style={{ borderColor: "rgba(13, 30, 111, 0.15)" }}
+            animate={{
+              scale: [1, 2.2, 1],
+              opacity: [0.3, 0, 0.3],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
             }}
           />
         </div>
 
-        {/* Company Name with glow effect */}
+        {/* Company Name with Crystal Clear Text */}
         <motion.div
           className="text-center"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-accent bg-clip-text text-transparent text-cyber-glow mb-2">
-            ASITLOG
-          </h1>
-          <p className="text-lg text-accent-300 font-medium tracking-wider">
-            Cybersecurity Excellence
-          </p>
+          <ShinyText
+            text="DSGCS"
+            disabled={false}
+            speed={3}
+            className="text-5xl md:text-6xl font-bold mb-3"
+            style={{
+              fontFamily: '"Inter", "Segoe UI", sans-serif',
+              letterSpacing: "0.05em",
+            }}
+          />
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <ShinyText
+              text="Digital Security Gateway Consulting Services"
+              disabled={false}
+              speed={4}
+              className="text-xl font-semibold mb-2"
+              style={{
+                fontFamily: '"Inter", "Segoe UI", sans-serif',
+                letterSpacing: "0.1em",
+                fontWeight: "600",
+              }}
+            />
+          </motion.div>
+          {/* <p
+            className="text-sm font-medium tracking-widest"
+            style={{
+              fontFamily: '"Inter", sans-serif',
+              color: "#E2E8F0",
+              textShadow:
+                "0 1px 8px rgba(0, 0, 0, 0.7), 0 0 15px rgba(226, 232, 240, 0.4)",
+              filter: "contrast(1.2) brightness(1.2)",
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              fontWeight: "500",
+            }}
+          >
+            Protecting Your Digital Future
+          </p> */}
         </motion.div>
       </motion.div>
 
@@ -120,7 +163,11 @@ const LoadingScreen = () => {
         {[0, 1, 2, 3, 4].map((index) => (
           <motion.div
             key={index}
-            className="w-2 h-2 bg-accent-400 rounded-full"
+            className="w-3 h-3 rounded-full"
+            style={{
+              background: `linear-gradient(135deg, #0D1E6F 0%, #6B46C1 100%)`,
+              boxShadow: "0 0 15px rgba(13, 30, 111, 0.6)",
+            }}
             animate={{
               scale: [1, 1.8, 1],
               opacity: [0.3, 1, 0.3],
@@ -142,24 +189,26 @@ const LoadingScreen = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
       >
-        <motion.p
-          className="text-gray-300 text-lg font-light tracking-wide"
-          animate={{
-            opacity: [0.5, 1, 0.5],
+        <ShinyText
+          text="Initializing Security Protocols..."
+          disabled={false}
+          speed={2}
+          className="text-lg font-light tracking-wide"
+          style={{
+            color: "#F8FAFC",
+            textShadow: "0 2px 8px rgba(13, 30, 111, 0.6)",
+            filter: "contrast(1.2) brightness(1.1)",
           }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          Initializing Security Protocols...
-        </motion.p>
+        />
 
         {/* Progress bar */}
-        <div className="mt-4 w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
+        <div className="mt-4 w-64 h-2 bg-gray-800/50 rounded-full overflow-hidden border border-gray-700/30">
           <motion.div
-            className="h-full bg-gradient-accent rounded-full"
+            className="h-full rounded-full"
+            style={{
+              background: `linear-gradient(90deg, #0D1E6F 0%, #6B46C1 50%, #0D1E6F 100%)`,
+              boxShadow: "0 0 20px rgba(13, 30, 111, 0.8)",
+            }}
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
             transition={{
@@ -177,13 +226,13 @@ const LoadingScreen = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 0.8 }}
       >
-        <div className="flex items-center justify-center space-x-8 text-xs text-gray-500">
+        {/* <div className="flex items-center justify-center space-x-8 text-xs text-gray-500">
           <span>24/7 SOC Monitoring</span>
           <span>•</span>
           <span>Real-time Threat Detection</span>
           <span>•</span>
           <span>Incident Response</span>
-        </div>
+        </div> */}
       </motion.div>
     </motion.div>
   );
