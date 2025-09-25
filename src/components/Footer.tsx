@@ -39,7 +39,7 @@ const Footer = () => {
             <motion.img
               src="/images/dsgcs.png"
               alt="DSGCS Logo"
-              className="w-20 h-20 object-contain drop-shadow-lg filter brightness-110"
+              className="w-24 h-26 object-contain drop-shadow-lg filter brightness-110"
               animate={{
                 rotateY: [0, 360],
               }}

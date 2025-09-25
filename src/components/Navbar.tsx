@@ -220,27 +220,25 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <motion.img
-                src="/images/dsgcs.png"
-                alt="DSGCS Logo"
-                className="w-16 h-18 object-contain drop-shadow-lg filter brightness-110"
-                animate={{
-                  rotateY: [0, 360],
-                }}
-                transition={{
-                  rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
-                }}
-              />
+              <div
+                className="relative overflow-hidden"
+                style={{ width: "80px", height: "80px" }}
+              >
+                <motion.img
+                  src="/images/dsgcs.png"
+                  alt="DSGCS Logo"
+                  className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
+                  animate={{
+                    rotateY: [0, 360],
+                  }}
+                  transition={{
+                    rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+                  }}
+                />
+              </div>
               <div className="hidden md:block">
-                <motion.span
-                  className="text-lg font-bold cyber-gradient-text"
-                  style={{ fontFamily: '"Inter", "Poppins", sans-serif' }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  DSGCS
-                </motion.span>
                 <div
-                  className="text-xs text-text-muted font-medium"
+                  className="text-sm text-text-muted font-medium"
                   style={{ fontFamily: '"Inter", sans-serif' }}
                 >
                   Digital Security Gateway Consulting Services

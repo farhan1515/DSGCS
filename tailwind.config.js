@@ -143,6 +143,12 @@ export default {
         body: ["1.125rem", { lineHeight: "1.6" }],
         small: ["0.875rem", { lineHeight: "1.5" }],
       },
+      spacing: {
+        38: "9.5rem", // 152px
+        42: "10.5rem", // 168px
+        46: "11.5rem", // 184px
+        50: "12.5rem", // 200px
+      },
       fontFamily: {
         sans: [
           "Inter",

@@ -35,9 +35,42 @@ const ServiceIcon = ({
 const OrbitingCirclesDemo: React.FC = () => {
   return (
     <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
-      <span className="pointer-events-none whitespace-pre-wrap text-center text-4xl md:text-6xl font-display leading-none cyber-gradient-text">
-        DSGCS
-      </span>
+      <div className="relative" style={{ width: "200px", height: "200px" }}>
+        <motion.img
+          src="/images/dsgcs.png"
+          alt="DSGCS Logo"
+          className="w-full h-full object-contain drop-shadow-2xl filter brightness-110"
+          style={{ minWidth: "160px", minHeight: "160px" }}
+          animate={{
+            rotateY: [0, 360],
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+            scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+          }}
+          onLoad={() => console.log("Logo loaded successfully")}
+          onError={() => console.log("Logo failed to load")}
+        />
+        {/* Glow effect around logo */}
+        <motion.div
+          className="absolute inset-0 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(13, 30, 111, 0.3) 0%, transparent 70%)",
+            filter: "blur(20px)",
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
 
       {/* Inner Circles */}
       <OrbitingCircles
@@ -230,10 +263,7 @@ const Hero = () => {
             <motion.span
               className="block mb-4"
               style={{
-                background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 25%, #E2E8F0 50%, #FFFFFF 100%)`,
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                color: "#FFFFFF",
                 textShadow: "0 0 15px rgba(255, 255, 255, 0.3)",
                 filter:
                   "contrast(1.1) brightness(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.2))",
@@ -247,14 +277,10 @@ const Hero = () => {
             <motion.span
               className="block text-2xl md:text-4xl lg:text-5xl"
               style={{
-                background: `linear-gradient(135deg, #10B981 0%, #34D399 25%, #6EE7B7 50%, #10B981 100%)`,
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                textShadow:
-                  "0 0 40px rgba(16, 185, 129, 0.6), 0 2px 15px rgba(16, 185, 129, 0.4)",
+                color: "#FFFFFF",
+                textShadow: "0 0 15px rgba(255, 255, 255, 0.3)",
                 filter:
-                  "contrast(1.3) brightness(1.2) drop-shadow(0 3px 6px rgba(0,0,0,0.3))",
+                  "contrast(1.1) brightness(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.2))",
               }}
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -265,12 +291,8 @@ const Hero = () => {
             <motion.span
               className="block text-2xl md:text-4xl lg:text-5xl mt-2"
               style={{
-                background: `linear-gradient(135deg, #F59E0B 0%, #FBBF24 25%, #FCD34D 50%, #F59E0B 100%)`,
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                textShadow:
-                  "0 0 20px rgba(245, 158, 11, 0.4), 0 2px 8px rgba(245, 158, 11, 0.3)",
+                color: "#FFFFFF",
+                textShadow: "0 0 15px rgba(255, 255, 255, 0.3)",
                 filter:
                   "contrast(1.1) brightness(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.2))",
               }}
