@@ -9,7 +9,7 @@ const ContactPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="pt-24 min-h-screen"
+      className="pt-32 min-h-screen"
     >
       {/* Hero Section */}
       <section className="py-20 px-4">

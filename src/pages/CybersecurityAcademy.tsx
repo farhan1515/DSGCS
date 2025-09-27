@@ -215,7 +215,7 @@ const CybersecurityAcademy = () => {
   return (
     <div
       ref={ref}
-      className="min-h-screen py-24 px-4 relative overflow-hidden bg-gradient-contact"
+      className="min-h-screen pt-32 pb-24 px-4 relative overflow-hidden bg-gradient-contact"
     >
       {/* Advanced Animated Background */}
       <div className="absolute inset-0 opacity-5">

@@ -201,101 +201,92 @@ const Navbar = () => {
 
   return (
     <motion.div
-      className="fixed top-3 left-0 right-0 z-50 flex justify-center transition-all duration-500"
+      className="fixed top-4 left-0 right-0 z-50 flex justify-center items-center space-x-8 transition-all duration-500"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {/* Unified Navigation Container */}
-      <div
-        className={`cyber-card rounded-2xl p-2.5 transition-all duration-500 shadow-cyber-lg ${
-          isScrolled ? "scale-95" : "scale-100"
-        }`}
-      >
-        <div className="flex items-center space-x-4">
-          {/* Logo Section */}
-          <Link to="/">
-            <motion.div
-              className="flex items-center space-x-3 group"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div
-                className="relative overflow-hidden"
-                style={{ width: "80px", height: "80px" }}
-              >
-                <motion.img
-                  src="/images/dsgcs.png"
-                  alt="DSGCS Logo"
-                  className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
-                  animate={{
-                    rotateY: [0, 360],
-                  }}
-                  transition={{
-                    rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
-                  }}
-                />
-              </div>
-              <div className="hidden md:block">
-                <div
-                  className="text-sm text-text-muted font-medium"
-                  style={{ fontFamily: '"Inter", sans-serif' }}
-                >
-                  Digital Security Gateway Consulting Services
-                </div>
-              </div>
-            </motion.div>
-          </Link>
-
-          {/* Desktop LimelightNav */}
-          <div className="hidden lg:block">
-            <LimelightNav
-              items={navItems}
-              activeIndex={activeIndex}
-              onItemClick={handleItemClick}
-              className="border-0 bg-transparent shadow-none"
+      {/* Logo Section */}
+      <Link to="/">
+        <motion.div
+          className="flex items-center space-x-3"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <div
+            className="relative overflow-hidden"
+            style={{ width: "120px", height: "120px" }}
+          >
+            <motion.img
+              src="/images/dsgcs.png"
+              alt="DSGCS Logo"
+              className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
+              animate={{
+                rotateY: [0, 360],
+              }}
+              transition={{
+                rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+              }}
             />
           </div>
+          <div className="hidden md:block">
+            <div
+              className="text-base lg:text-lg text-text-muted font-medium"
+              style={{ fontFamily: '"Inter", sans-serif' }}
+            >
+              Digital Security Gateway Consulting Services
+            </div>
+          </div>
+        </motion.div>
+      </Link>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="lg:hidden p-3 rounded-2xl hover:bg-accent-500/10 transition-all duration-300"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <AnimatePresence mode="wait">
-              {isMobileMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="w-6 h-6 text-accent-500" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="w-6 h-6 text-accent-500" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
-        </div>
+      {/* Desktop LimelightNav */}
+      <div className="hidden lg:block">
+        <LimelightNav
+          items={navItems}
+          activeIndex={activeIndex}
+          onItemClick={handleItemClick}
+          className="border-0 bg-transparent shadow-none"
+        />
       </div>
+
+      {/* Mobile Menu Button */}
+      <motion.button
+        className="lg:hidden p-3 rounded-2xl hover:bg-accent-500/10 transition-all duration-300"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.05 }}
+      >
+        <AnimatePresence mode="wait">
+          {isMobileMenuOpen ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <X className="w-6 h-6 text-accent-500" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="menu"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Menu className="w-6 h-6 text-accent-500" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.button>
 
       {/* Enhanced Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="lg:hidden absolute top-20 left-4 right-4 cyber-card rounded-2xl p-6 shadow-cyber-lg"
+            className="lg:hidden absolute top-20 left-4 right-4 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 shadow-2xl"
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}

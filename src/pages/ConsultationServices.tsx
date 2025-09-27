@@ -671,7 +671,7 @@ const ConsultationServices = () => {
   return (
     <div
       ref={ref}
-      className="min-h-screen py-24 px-4 relative overflow-hidden bg-gradient-hero-services"
+      className="min-h-screen pt-32 pb-24 px-4 relative overflow-hidden bg-gradient-hero-services"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-5 will-change-transform">
