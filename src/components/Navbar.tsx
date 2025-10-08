@@ -130,16 +130,16 @@ const Navbar = () => {
     { id: "home", icon: <Home />, label: "Home", path: "/" },
     { id: "about", icon: <User />, label: "About Us", path: "/about" },
     {
-      id: "solutions",
-      icon: <Shield />,
-      label: "Solutions",
-      path: "/solutions",
-    },
-    {
       id: "consultation",
       icon: <Settings />,
       label: "Consultation",
       path: "/consultation",
+    },
+    {
+      id: "solutions",
+      icon: <Shield />,
+      label: "Solutions",
+      path: "/solutions",
     },
     {
       id: "professional",
@@ -201,92 +201,184 @@ const Navbar = () => {
 
   return (
     <motion.div
-      className="fixed top-4 left-0 right-0 z-50 flex justify-center items-center space-x-8 transition-all duration-500"
+      className="fixed top-2 sm:top-4 left-0 right-0 z-50 px-2 sm:px-4 md:px-6 lg:px-8 transition-all duration-500"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {/* Logo Section */}
-      <Link to="/">
-        <motion.div
-          className="flex items-center space-x-3"
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 300 }}
+      {/* Mobile Layout */}
+      <div className="lg:hidden">
+        <div
+          className={`w-full backdrop-blur-xl bg-gradient-to-r from-white/5 via-white/10 to-white/5 border border-white/20 rounded-2xl sm:rounded-3xl shadow-2xl transition-all duration-500 ${
+            isScrolled
+              ? "shadow-[0_8px_32px_rgba(147,51,234,0.3)] border-accent-500/30"
+              : "shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+          }`}
+          style={{
+            boxShadow: isScrolled
+              ? "0 8px 32px rgba(147, 51, 234, 0.3), 0 0 60px rgba(147, 51, 234, 0.1)"
+              : "0 8px 32px rgba(0, 0, 0, 0.3)",
+          }}
         >
-          <div
-            className="relative overflow-hidden"
-            style={{ width: "120px", height: "120px" }}
-          >
-            <motion.img
-              src="/images/dsgcs.png"
-              alt="DSGCS Logo"
-              className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
-              animate={{
-                rotateY: [0, 360],
-              }}
-              transition={{
-                rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
-              }}
-            />
-          </div>
-          <div className="hidden md:block">
-            <div
-              className="text-base lg:text-lg text-text-muted font-medium"
-              style={{ fontFamily: '"Inter", sans-serif' }}
+          <div className="flex items-center justify-between px-3 sm:px-4 py-3">
+            {/* Logo + Company Name - Mobile */}
+            <Link
+              to="/"
+              className="flex items-center gap-2 sm:gap-3 flex-shrink-0"
             >
-              Digital Security Gateway Consulting Services
-            </div>
-          </div>
-        </motion.div>
-      </Link>
+              <div
+                className="relative overflow-hidden"
+                style={{ width: "70px", height: "80px" }}
+              >
+                <motion.img
+                  src="/images/dsgcs.png"
+                  alt="DSGCS Logo"
+                  className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
+                  animate={{
+                    rotateY: [0, 360],
+                  }}
+                  transition={{
+                    rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+                  }}
+                />
+              </div>
+              <div className="flex-shrink-0">
+                <div
+                  className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-white via-accent-200 to-white bg-clip-text text-transparent leading-tight"
+                  style={{
+                    fontFamily: '"Inter", sans-serif',
+                    textShadow: "0 2px 10px rgba(147, 51, 234, 0.3)",
+                  }}
+                >
+                  <span className="block sm:hidden">DSGCS</span>
+                  <span className="hidden sm:block">
+                    Digital Security Gateway
+                  </span>
+                  <span className="hidden sm:block text-xs text-accent-400/90">
+                    Consulting Services
+                  </span>
+                </div>
+              </div>
+            </Link>
 
-      {/* Desktop LimelightNav */}
-      <div className="hidden lg:block">
-        <LimelightNav
-          items={navItems}
-          activeIndex={activeIndex}
-          onItemClick={handleItemClick}
-          className="border-0 bg-transparent shadow-none"
-        />
+            {/* Mobile Menu Button */}
+            <motion.button
+              className="p-2 sm:p-3 rounded-xl backdrop-blur-md bg-accent-500/10 border border-accent-500/30 hover:bg-accent-500/20 transition-all duration-300 shadow-lg"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <AnimatePresence mode="wait">
+                {isMobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="w-5 h-5 sm:w-6 sm:h-6 text-accent-400" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-accent-400" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </div>
+        </div>
       </div>
 
-      {/* Mobile Menu Button */}
-      <motion.button
-        className="lg:hidden p-3 rounded-2xl hover:bg-accent-500/10 transition-all duration-300"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        whileTap={{ scale: 0.95 }}
-        whileHover={{ scale: 1.05 }}
-      >
-        <AnimatePresence mode="wait">
-          {isMobileMenuOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+      {/* Desktop Layout */}
+      <div className="hidden lg:flex justify-center items-center gap-6">
+        {/* Logo - Independent Outside Container */}
+        <Link to="/" className="flex-shrink-0">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div
+              className="relative overflow-hidden"
+              style={{ width: "120px", height: "120px" }}
             >
-              <X className="w-6 h-6 text-accent-500" />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="menu"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Menu className="w-6 h-6 text-accent-500" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.button>
+              <motion.img
+                src="/images/dsgcs.png"
+                alt="DSGCS Logo"
+                className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
+                animate={{
+                  rotateY: [0, 360],
+                }}
+                transition={{
+                  rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+                }}
+              />
+            </div>
+          </motion.div>
+        </Link>
+
+        {/* Main Navbar Container - Company Name + Nav Items */}
+        <div
+          className={`backdrop-blur-xl bg-gradient-to-r from-white/5 via-white/10 to-white/5 border border-white/20 rounded-3xl shadow-2xl transition-all duration-500 ${
+            isScrolled
+              ? "shadow-[0_8px_32px_rgba(147,51,234,0.3)] border-accent-500/30"
+              : "shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+          }`}
+          style={{
+            boxShadow: isScrolled
+              ? "0 8px 32px rgba(147, 51, 234, 0.3), 0 0 60px rgba(147, 51, 234, 0.1)"
+              : "0 8px 32px rgba(0, 0, 0, 0.3)",
+            width: "fit-content",
+            maxWidth: "calc(100vw - 200px)",
+          }}
+        >
+          {/* Inner Container */}
+          <div className="flex items-center gap-6 px-6 py-4">
+            {/* Company Name */}
+            <div className="flex-shrink-0">
+              <div
+                className="text-base lg:text-lg font-semibold bg-gradient-to-r from-white via-accent-200 to-white bg-clip-text text-transparent leading-tight whitespace-nowrap"
+                style={{
+                  fontFamily: '"Inter", sans-serif',
+                  textShadow: "0 2px 10px rgba(147, 51, 234, 0.3)",
+                }}
+              >
+                Digital Security Gateway
+                <br />
+                <span className="text-sm lg:text-base text-accent-400/90">
+                  Consulting Services
+                </span>
+              </div>
+            </div>
+
+            {/* Desktop LimelightNav */}
+            <div className="flex items-center">
+              <LimelightNav
+                items={navItems}
+                activeIndex={activeIndex}
+                onItemClick={handleItemClick}
+                className="border-0 bg-transparent shadow-none"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Enhanced Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="lg:hidden absolute top-20 left-4 right-4 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 shadow-2xl"
+            className="lg:hidden absolute top-[70px] sm:top-[90px] left-2 right-2 sm:left-4 sm:right-4 backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-white/10 border border-accent-500/30 rounded-2xl p-4 sm:p-6 shadow-2xl"
+            style={{
+              boxShadow:
+                "0 8px 32px rgba(147, 51, 234, 0.3), 0 0 60px rgba(147, 51, 234, 0.15)",
+            }}
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
