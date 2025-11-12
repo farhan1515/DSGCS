@@ -20,21 +20,34 @@ const ServiceCard = ({
   service,
   size = 50,
   isInner = false,
+  onHoverChange,
 }: {
   service: ServiceData;
   size?: number;
   isInner?: boolean;
+  onHoverChange?: (isHovered: boolean) => void;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   const showPopup = isHovered || isClicked;
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    onHoverChange?.(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setIsClicked(false);
+    onHoverChange?.(false);
+  };
+
   return (
     <div
       className="relative flex flex-col items-center justify-center"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={() => setIsClicked(!isClicked)}
     >
       {/* Icon Container */}
@@ -49,13 +62,13 @@ const ServiceCard = ({
           style={{
             background: showPopup
               ? `linear-gradient(135deg, ${service.color}40, ${service.color}20)`
-              : 'rgba(255, 255, 255, 0.05)',
+              : "rgba(255, 255, 255, 0.05)",
             border: showPopup
               ? `2px solid ${service.color}`
-              : '2px solid rgba(255, 255, 255, 0.1)',
+              : "2px solid rgba(255, 255, 255, 0.1)",
             boxShadow: showPopup
               ? `0 0 20px ${service.color}60, 0 4px 12px rgba(0,0,0,0.3)`
-              : '0 2px 8px rgba(0,0,0,0.2)',
+              : "0 2px 8px rgba(0,0,0,0.2)",
           }}
         >
           <img
@@ -78,10 +91,10 @@ const ServiceCard = ({
           <div
             className="px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap backdrop-blur-md"
             style={{
-              background: 'rgba(9, 22, 92, 0.8)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: '#FFFFFF',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+              background: "rgba(9, 22, 92, 0.8)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              color: "#FFFFFF",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
             }}
           >
             {service.title}
@@ -96,8 +109,8 @@ const ServiceCard = ({
             className="absolute z-50 pointer-events-none"
             style={{
               top: isInner ? size + 15 : size + 45,
-              left: '50%',
-              transform: 'translateX(-50%)',
+              left: "50%",
+              transform: "translateX(-50%)",
             }}
             initial={{ opacity: 0, y: -10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -107,7 +120,7 @@ const ServiceCard = ({
             <div
               className="relative px-4 py-3 rounded-xl backdrop-blur-xl min-w-[200px] max-w-[280px]"
               style={{
-                background: 'rgba(9, 22, 92, 0.95)',
+                background: "rgba(9, 22, 92, 0.95)",
                 border: `2px solid ${service.color}`,
                 boxShadow: `0 8px 32px rgba(0,0,0,0.4), 0 0 20px ${service.color}40`,
               }}
@@ -141,9 +154,9 @@ const ServiceCard = ({
                 className="absolute w-3 h-3 rotate-45"
                 style={{
                   top: -7,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  background: 'rgba(9, 22, 92, 0.95)',
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  background: "rgba(9, 22, 92, 0.95)",
                   borderTop: `2px solid ${service.color}`,
                   borderLeft: `2px solid ${service.color}`,
                 }}
@@ -158,18 +171,30 @@ const ServiceCard = ({
 
 // OrbitingCircles demo configured for DSGCS service icons
 const OrbitingCirclesDemo: React.FC = () => {
+  const [isAnyHovered, setIsAnyHovered] = useState(false);
+
   // Define all services with their details
   const innerServices: ServiceData[] = [
     {
       iconName: "network-security.svg",
       title: "Network Security",
-      details: ["Firewall Management", "IDS/IPS", "Network Segmentation", "VPN Solutions"],
+      details: [
+        "Firewall Management",
+        "IDS/IPS",
+        "Network Segmentation",
+        "VPN Solutions",
+      ],
       color: "#00FFF7",
     },
     {
       iconName: "identity.svg",
       title: "Identity Management",
-      details: ["SSO Solutions", "MFA Implementation", "Access Control", "User Provisioning"],
+      details: [
+        "SSO Solutions",
+        "MFA Implementation",
+        "Access Control",
+        "User Provisioning",
+      ],
       color: "#FF3B3B",
     },
   ];
@@ -178,49 +203,89 @@ const OrbitingCirclesDemo: React.FC = () => {
     {
       iconName: "application-security.svg",
       title: "Application Security",
-      details: ["SAST/DAST", "Code Review", "Penetration Testing", "Secure SDLC"],
+      details: [
+        "SAST/DAST",
+        "Code Review",
+        "Penetration Testing",
+        "Secure SDLC",
+      ],
       color: "#00FFF7",
     },
     {
       iconName: "secure-data.svg",
       title: "Data Security",
-      details: ["Encryption", "Data Classification", "Secure Storage", "Data Masking"],
+      details: [
+        "Encryption",
+        "Data Classification",
+        "Secure Storage",
+        "Data Masking",
+      ],
       color: "#AA00FF",
     },
     {
       iconName: "database-security.svg",
       title: "Database Security",
-      details: ["DLP (Data Loss Prevention)", "DC (Data Classification)", "DRM (Digital Rights Management)", "IAM & PAM"],
+      details: [
+        "DLP (Data Loss Prevention)",
+        "DC (Data Classification)",
+        "DRM (Digital Rights Management)",
+        "IAM & PAM",
+      ],
       color: "#007BFF",
     },
     {
       iconName: "complianceservice.svg",
       title: "Compliance Services",
-      details: ["NCA Compliance", "SAMA Standards", "ISO Certification", "CITC & ARAMCO"],
+      details: [
+        "NCA Compliance",
+        "SAMA Standards",
+        "ISO Certification",
+        "CITC & ARAMCO",
+      ],
       color: "#FFD700",
     },
     {
       iconName: "digitaltrans.svg",
       title: "Digital Transformation",
-      details: ["Infrastructure Modernization", "Cloud Migration", "Data & Analytics", "Process Automation"],
+      details: [
+        "Infrastructure Modernization",
+        "Cloud Migration",
+        "Data & Analytics",
+        "Process Automation",
+      ],
       color: "#00CC00",
     },
     {
       iconName: "infrastructure.svg",
       title: "Infrastructure Security",
-      details: ["Cloud Security", "Server Hardening", "Backup Solutions", "Disaster Recovery"],
+      details: [
+        "Cloud Security",
+        "Server Hardening",
+        "Backup Solutions",
+        "Disaster Recovery",
+      ],
       color: "#FF007F",
     },
     {
       iconName: "web-development (1).svg",
       title: "Web Development",
-      details: ["Secure Web Apps", "API Security", "Web Frameworks", "Performance Optimization"],
+      details: [
+        "Secure Web Apps",
+        "API Security",
+        "Web Frameworks",
+        "Performance Optimization",
+      ],
       color: "#FFD700",
     },
     {
       iconName: "mobiledev.svg",
       title: "Mobile Development",
-      details: ["iOS & Android", "Mobile Security", "Cross-Platform", "App Store Deployment"],
+      details: [
+        "iOS & Android",
+        "Mobile Security",
+        "Cross-Platform",
+        "App Store Deployment",
+      ],
       color: "#00CC00",
     },
   ];
@@ -268,13 +333,20 @@ const OrbitingCirclesDemo: React.FC = () => {
       {innerServices.map((service, index) => (
         <OrbitingCircles
           key={`inner-${index}`}
-          className="border-none bg-transparent"
+          className={`border-none bg-transparent ${
+            isAnyHovered ? "[animation-play-state:paused]" : ""
+          }`}
           duration={20}
           delay={index * 10}
           radius={80}
           path={index === 0}
         >
-          <ServiceCard service={service} size={35} isInner={true} />
+          <ServiceCard
+            service={service}
+            size={35}
+            isInner={true}
+            onHoverChange={setIsAnyHovered}
+          />
         </OrbitingCircles>
       ))}
 
@@ -282,14 +354,20 @@ const OrbitingCirclesDemo: React.FC = () => {
       {outerServices.map((service, index) => (
         <OrbitingCircles
           key={`outer-${index}`}
-          className="border-none bg-transparent"
+          className={`border-none bg-transparent ${
+            isAnyHovered ? "[animation-play-state:paused]" : ""
+          }`}
           radius={220}
           duration={25}
           delay={index * (25 / outerServices.length)}
           reverse
           path={index === 0}
         >
-          <ServiceCard service={service} size={55} />
+          <ServiceCard
+            service={service}
+            size={55}
+            onHoverChange={setIsAnyHovered}
+          />
         </OrbitingCircles>
       ))}
     </div>
