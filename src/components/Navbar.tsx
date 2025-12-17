@@ -226,30 +226,21 @@ const Navbar = () => {
               to="/"
               className="flex items-center gap-2 sm:gap-3 flex-shrink-0"
             >
-              <div className="flex items-center gap-1">
-                {["d1", "d2", "d3"].map((img, index) => (
-                  <div
-                    key={index}
-                    className="relative overflow-hidden"
-                    style={{ width: "50px", height: "60px" }}
-                  >
-                    <motion.img
-                      src={`/images/${img}.png`}
-                      alt={`DSGCS Logo ${index + 1}`}
-                      className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
-                      animate={{
-                        rotateY: [0, 360],
-                      }}
-                      transition={{
-                        rotateY: {
-                          duration: 8,
-                          repeat: Infinity,
-                          ease: "linear",
-                        },
-                      }}
-                    />
-                  </div>
-                ))}
+              <div
+                className="relative overflow-hidden"
+                style={{ width: "70px", height: "80px" }}
+              >
+                <motion.img
+                  src="/images/dsgcs.png"
+                  alt="DSGCS Logo"
+                  className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
+                  animate={{
+                    rotateY: [0, 360],
+                  }}
+                  transition={{
+                    rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+                  }}
+                />
               </div>
               <div className="flex-shrink-0">
                 <div
@@ -308,9 +299,36 @@ const Navbar = () => {
       {/* Desktop Layout */}
       <div className="hidden lg:flex justify-center items-center gap-6">
         {/* Logo - Independent Outside Container */}
+        {/* Logo Comparison Section */}
         <div className="flex items-center gap-4 flex-shrink-0">
-          {["d1", "d2", "d3"].map((img, index) => (
-            <Link key={index} to="/" className="flex-shrink-0">
+          {/* Original Logo */}
+          <Link to="/" className="flex-shrink-0">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div
+                className="relative overflow-hidden"
+                style={{ width: "120px", height: "120px" }}
+              >
+                <motion.img
+                  src="/images/dsgcs.png"
+                  alt="DSGCS Logo"
+                  className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
+                  animate={{
+                    rotateY: [0, 360],
+                  }}
+                  transition={{
+                    rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+                  }}
+                />
+              </div>
+            </motion.div>
+          </Link>
+
+          {/* New Variants for Comparison */}
+          {/* {["DSGCS10", "DSGCSEX"].map((img, index) => (
+            <div key={index} className="flex-shrink-0">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -321,7 +339,7 @@ const Navbar = () => {
                 >
                   <motion.img
                     src={`/images/${img}.png`}
-                    alt={`DSGCS Logo ${index + 1}`}
+                    alt={`Comparison ${img}`}
                     className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
                     animate={{
                       rotateY: [0, 360],
@@ -336,8 +354,8 @@ const Navbar = () => {
                   />
                 </div>
               </motion.div>
-            </Link>
-          ))}
+            </div>
+          ))} */}
         </div>
 
         {/* Main Navbar Container - Company Name + Nav Items */}
