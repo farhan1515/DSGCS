@@ -58,46 +58,32 @@ const CompanyIntro = () => {
           {/* Digital Security Gateway Consulting Services Intro */}
           <motion.div className="mb-16" variants={fadeInVariants}>
             <motion.h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white"
               style={{
-                background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 30%, #E2E8F0 100%)`,
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                textShadow: "0 0 40px rgba(255, 255, 255, 0.4)",
-                filter: "contrast(1.1) brightness(1.1)",
+                fontFamily: '"Inter", sans-serif',
+                textShadow: "0 2px 20px rgba(255, 255, 255, 0.2)",
+                letterSpacing: "-0.02em",
               }}
             >
               Digital Security Gateway Consulting Services (DSGCS)
             </motion.h2>
 
             <motion.p
-              className="text-xl leading-relaxed max-w-5xl mx-auto"
+              className="text-xl md:text-2xl leading-relaxed max-w-5xl mx-auto text-white/90"
               style={{
-                color: "#F1F5F9",
-                textShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
-                filter: "contrast(1.1) brightness(1.1)",
+                fontFamily: '"Inter", sans-serif',
+                textShadow: "0 1px 10px rgba(0, 0, 0, 0.3)",
                 lineHeight: "1.8",
+                fontWeight: "400",
               }}
               variants={fadeInVariants}
             >
-              stands as a{" "}
-              <span className="font-semibold text-emerald-400">
-                premier cybersecurity company
-              </span>{" "}
-              based in{" "}
-              <span className="font-semibold text-amber-400">
-                Riyadh, Saudi Arabia
-              </span>
-              , committed to securing digital landscapes with cutting-edge
+              stands as a premier cybersecurity company based in Riyadh, Saudi
+              Arabia, committed to securing digital landscapes with cutting-edge
               solutions. With a rich legacy of safeguarding critical assets,
               Digital Security Gateway Consulting Services (DSGCS) is renowned
-              for its{" "}
-              <span className="font-semibold text-purple-400">
-                expertise, innovative approach, and unwavering commitment to
-                cybersecurity excellence
-              </span>
-              .
+              for its expertise, innovative approach, and unwavering commitment
+              to cybersecurity excellence.
             </motion.p>
           </motion.div>
 
@@ -112,13 +98,13 @@ const CompanyIntro = () => {
             >
               <div className="relative">
                 <Shield
-                  className="w-16 h-16 text-emerald-400"
+                  className="w-16 h-16 text-white"
                   style={{
-                    filter: "drop-shadow(0 0 20px rgba(16, 185, 129, 0.6))",
+                    filter: "drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))",
                   }}
                 />
                 <motion.div
-                  className="absolute inset-0 border-2 border-emerald-400/30 rounded-full"
+                  className="absolute inset-0 border-2 border-white/20 rounded-full"
                   animate={{
                     scale: [1, 1.3, 1],
                     opacity: [0.3, 0.6, 0.3],
@@ -133,14 +119,11 @@ const CompanyIntro = () => {
             </motion.div>
 
             <motion.h3
-              className="text-3xl md:text-4xl font-bold mb-6"
+              className="text-3xl md:text-4xl font-bold mb-8 text-white"
               style={{
-                background: `linear-gradient(135deg, #10B981 0%, #34D399 50%, #6EE7B7 100%)`,
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                textShadow: "0 0 30px rgba(16, 185, 129, 0.4)",
-                filter: "contrast(1.2) brightness(1.2)",
+                fontFamily: '"Inter", sans-serif',
+                textShadow: "0 2px 15px rgba(255, 255, 255, 0.2)",
+                letterSpacing: "-0.01em",
               }}
               variants={fadeInVariants}
             >
@@ -148,57 +131,35 @@ const CompanyIntro = () => {
             </motion.h3>
 
             <motion.div
-              className="text-lg leading-relaxed max-w-4xl mx-auto space-y-4"
+              className="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto space-y-6 text-white/90"
               style={{
-                color: "#F8FAFC",
-                textShadow: "0 1px 6px rgba(0, 0, 0, 0.3)",
-                filter: "contrast(1.1) brightness(1.1)",
+                fontFamily: '"Inter", sans-serif',
+                textShadow: "0 1px 6px rgba(0, 0, 0, 0.2)",
+                lineHeight: "1.8",
+                fontWeight: "400",
               }}
               variants={staggerContainer}
             >
               <motion.p variants={fadeInVariants}>
-                At{" "}
-                <span className="font-semibold text-emerald-400">
-                  Digital Security Gateway Consulting Services (DSGCS)
-                </span>
-                , we prioritize the{" "}
-                <span className="font-semibold text-purple-400">
-                  security and peace of mind
-                </span>{" "}
-                of our customers. Our dedicated team of experts is committed to
-                providing{" "}
-                <span className="font-semibold text-amber-400">
-                  cutting-edge cybersecurity solutions
-                </span>{" "}
-                tailored to meet your unique needs.
+                At Digital Security Gateway Consulting Services (DSGCS), we
+                prioritize the security and peace of mind of our customers. Our
+                dedicated team of experts is committed to providing cutting-edge
+                cybersecurity solutions tailored to meet your unique needs.
               </motion.p>
 
               <motion.p variants={fadeInVariants}>
-                We strive to build{" "}
-                <span className="font-semibold text-blue-400">
-                  long-lasting relationships
-                </span>{" "}
-                based on{" "}
-                <span className="font-semibold text-emerald-400">
-                  trust, integrity, and excellence
-                </span>{" "}
-                in service. By staying ahead of emerging threats and
-                continuously enhancing our offerings, we ensure that your
-                organization remains{" "}
-                <span className="font-semibold text-purple-400">
-                  protected and resilient
-                </span>
-                .
+                We strive to build long-lasting relationships based on trust,
+                integrity, and excellence in service. By staying ahead of
+                emerging threats and continuously enhancing our offerings, we
+                ensure that your organization remains protected and resilient.
               </motion.p>
 
               <motion.p
-                className="text-xl font-semibold pt-4"
+                className="text-xl md:text-2xl font-medium pt-4 text-white"
                 style={{
-                  background: `linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #FCD34D 100%)`,
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  textShadow: "0 0 20px rgba(245, 158, 11, 0.4)",
+                  fontFamily: '"Inter", sans-serif',
+                  textShadow: "0 2px 12px rgba(255, 255, 255, 0.2)",
+                  letterSpacing: "-0.01em",
                 }}
                 variants={fadeInVariants}
               >
@@ -209,9 +170,9 @@ const CompanyIntro = () => {
           </motion.div>
         </motion.div>
 
-        {/* Decorative Elements */}
+        {/* Decorative Elements - Subtle white icons */}
         <motion.div
-          className="absolute top-1/2 left-10 transform -translate-y-1/2"
+          className="absolute top-1/2 left-10 transform -translate-y-1/2 hidden lg:block"
           animate={{
             y: [0, -20, 0],
             rotate: [0, 5, 0],
@@ -222,11 +183,11 @@ const CompanyIntro = () => {
             ease: "easeInOut",
           }}
         >
-          <Globe className="w-12 h-12 text-blue-400/30" />
+          <Globe className="w-12 h-12 text-white/20" />
         </motion.div>
 
         <motion.div
-          className="absolute top-1/4 right-10"
+          className="absolute top-1/4 right-10 hidden lg:block"
           animate={{
             y: [0, 15, 0],
             rotate: [0, -5, 0],
@@ -238,11 +199,11 @@ const CompanyIntro = () => {
             delay: 1,
           }}
         >
-          <Award className="w-10 h-10 text-amber-400/30" />
+          <Award className="w-10 h-10 text-white/20" />
         </motion.div>
 
         <motion.div
-          className="absolute bottom-1/4 left-20"
+          className="absolute bottom-1/4 left-20 hidden lg:block"
           animate={{
             y: [0, -10, 0],
             x: [0, 5, 0],
@@ -254,7 +215,7 @@ const CompanyIntro = () => {
             delay: 2,
           }}
         >
-          <Users className="w-8 h-8 text-purple-400/30" />
+          <Users className="w-8 h-8 text-white/20" />
         </motion.div>
       </div>
     </section>

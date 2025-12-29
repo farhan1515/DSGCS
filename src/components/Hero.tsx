@@ -226,13 +226,17 @@ const SpinningLogos: React.FC = () => {
         {/* Center Logo */}
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
-            className="rounded-full w-40 h-40 md:w-44 md:h-44 flex items-center justify-center bg-gradient-accent shadow-glow-xl relative overflow-hidden border-4 border-accent-500/50 backdrop-blur-sm"
+            className="rounded-full w-40 h-40 md:w-40 md:h-40 flex items-center justify-center bg-gradient-accent shadow-glow-xl relative overflow-hidden border-4 border-accent-500/50 backdrop-blur-sm p-4"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
             whileHover={{ scale: 1.05 }}
           >
-            <Shield className="w-16 h-16 md:w-18 md:h-18 text-primary-900 drop-shadow-2xl filter brightness-110" />
+            <img
+              src="/images/DSGCS16.png"
+              alt="DSGCS Core"
+              className="w-full h-full object-contain"
+            />
 
             <motion.div
               className="absolute inset-0 border-4 border-accent-500/60 rounded-full"

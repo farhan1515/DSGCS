@@ -213,12 +213,12 @@ const OrbitingCirclesDemo: React.FC = () => {
     },
     {
       iconName: "secure-data.svg",
-      title: "Data Security",
+      title: "Data & AI",
       details: [
-        "Encryption",
-        "Data Classification",
-        "Secure Storage",
-        "Data Masking",
+        "Business Intelligence",
+        "Predictive Analytics",
+        "Monetization Strategy",
+        "Data Governance",
       ],
       color: "#AA00FF",
     },
@@ -292,12 +292,11 @@ const OrbitingCirclesDemo: React.FC = () => {
 
   return (
     <div className="relative flex h-full w-full items-center justify-center overflow-visible">
-      <div className="relative" style={{ width: "200px", height: "200px" }}>
+      <div className="relative rounded-full p-5 md:p-6 w-[160px] h-[160px] md:w-[200px] md:h-[200px]">
         <motion.img
-          src="/images/dsgcs.png"
+          src="/images/DSGCS16.png"
           alt="DSGCS Logo"
           className="w-full h-full object-contain drop-shadow-2xl filter brightness-110"
-          style={{ minWidth: "160px", minHeight: "160px" }}
           animate={{
             rotateY: [0, 360],
             scale: [1, 1.05, 1],
@@ -338,12 +337,12 @@ const OrbitingCirclesDemo: React.FC = () => {
           }`}
           duration={20}
           delay={index * 10}
-          radius={80}
+          radius={typeof window !== "undefined" && window.innerWidth < 768 ? 55 : 80}
           path={index === 0}
         >
           <ServiceCard
             service={service}
-            size={35}
+            size={typeof window !== "undefined" && window.innerWidth < 768 ? 24 : 35}
             isInner={true}
             onHoverChange={setIsAnyHovered}
           />
@@ -357,7 +356,7 @@ const OrbitingCirclesDemo: React.FC = () => {
           className={`border-none bg-transparent ${
             isAnyHovered ? "[animation-play-state:paused]" : ""
           }`}
-          radius={220}
+          radius={typeof window !== "undefined" && window.innerWidth < 768 ? 130 : 220}
           duration={25}
           delay={index * (25 / outerServices.length)}
           reverse
@@ -365,7 +364,7 @@ const OrbitingCirclesDemo: React.FC = () => {
         >
           <ServiceCard
             service={service}
-            size={55}
+            size={typeof window !== "undefined" && window.innerWidth < 768 ? 32 : 55}
             onHoverChange={setIsAnyHovered}
           />
         </OrbitingCircles>
@@ -424,7 +423,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-32 md:pt-24"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-16 md:pt-20"
     >
       {/* CyberCore Background */}
       <div className="absolute inset-0 bg-gradient-cyber" />
@@ -469,11 +468,11 @@ const Hero = () => {
         </Canvas>
       </div>
 
-      {/* Main Content - Two Column Layout */}
+      {/* Main Content - Text first, then circular rings on mobile */}
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Left: Text Content */}
         <motion.div
-          className="flex-1 text-left max-w-xl space-y-6"
+          className="flex-1 text-center md:text-left max-w-xl space-y-6 px-4"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -555,7 +554,7 @@ const Hero = () => {
           </motion.p>
 
           {/* Enhanced CTA */}
-          <motion.div
+          {/* <motion.div
             className="pt-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -586,12 +585,12 @@ const Hero = () => {
               <span>Get in Touch</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </motion.button>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
-        {/* Right: OrbitingCircles services - merged with background */}
+        {/* Right: OrbitingCircles services - Shows first on mobile */}
         <motion.div
-          className="flex-1 w-full h-[500px] md:h-[600px] relative"
+          className="flex-1 w-full h-[350px] md:h-[600px] relative"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}

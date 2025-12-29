@@ -44,7 +44,7 @@ const LoadingScreen = () => {
         {/* DSGCS Logo - Clean and Independent */}
         <div className="relative">
           <motion.img
-            src="/images/dsgcs.png"
+            src="/images/DSGCS16.png"
             alt="DSGCS Logo"
             className="w-48 h-48 object-contain drop-shadow-2xl filter brightness-110"
             animate={{

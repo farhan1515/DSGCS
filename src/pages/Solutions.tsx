@@ -19,6 +19,11 @@ import {
   Globe,
   Server,
   Smartphone,
+  Brain,
+  Rocket,
+  Cloud,
+  Cpu,
+  BarChart,
 } from "lucide-react";
 
 interface ServiceCategory {
@@ -342,7 +347,7 @@ const Solutions = () => {
     },
     {
       id: "data",
-      title: "Data Security",
+      title: "Data Security and Data Privacy",
       icon: Database,
       gradient: "from-teal-400 via-cyan-500 to-blue-600",
       borderGradient: "from-teal-400/50 via-cyan-500/50 to-blue-600/50",
@@ -514,47 +519,105 @@ const Solutions = () => {
         },
       ],
     },
+    {
+      id: "data-ai",
+      title: "Data & AI",
+      icon: Brain,
+      gradient: "from-violet-400 via-purple-500 to-fuchsia-600",
+      borderGradient: "from-violet-400/50 via-purple-500/50 to-fuchsia-600/50",
+      services: [
+        {
+          name: "Business Intelligence & Analytics",
+          icon: BarChart,
+          description:
+            "Leveraging data-driven intelligence to catalyze business transformation, streamline operations, and identify untapped monetization opportunities.",
+          features: [
+            "Predictive Analytics",
+            "Real-time Dashboards",
+            "Data Visualization",
+            "Market Intelligence",
+          ],
+          color: "#8B5CF6",
+        },
+        {
+          name: "Data Strategy & Monetization",
+          icon: Database,
+          description:
+            "Converting organizational data assets into strategic capital to drive agility and sustainable revenue expansion.",
+          features: [
+            "Data Governance",
+            "Monetization Strategy",
+            "Asset Optimization",
+            "Revenue Growth",
+          ],
+          color: "#D946EF",
+        },
+      ],
+    },
+    {
+      id: "digital-transformation",
+      title: "Digital Transformation",
+      icon: Rocket,
+      gradient: "from-cyan-400 via-blue-500 to-indigo-600",
+      borderGradient: "from-cyan-400/50 via-blue-500/50 to-indigo-600/50",
+      services: [
+        {
+          name: "Strategic Consulting",
+          icon: Brain,
+          description:
+            "Assessing digital maturity, defining a vision, and creating a phased roadmap that aligns technology investments with long-term business goals.",
+          features: [
+            "Maturity Assessment",
+            "Vision Roadmap",
+            "Tech Alignment",
+            "Goal Setting",
+          ],
+          color: "#06B6D4",
+        },
+        {
+          name: "Cloud & Infrastructure Modernization",
+          icon: Cloud,
+          description:
+            "Migrating from physical data centers to hybrid or public cloud platforms (e.g., AWS, Azure, Google Cloud) to boost scalability and reduce maintenance costs.",
+          features: [
+            "Cloud Migration",
+            "Scalability Boost",
+            "Cost Optimization",
+            "Hybrid Solutions",
+          ],
+          color: "#3B82F6",
+        },
+        {
+          name: "AI & Intelligent Automation",
+          icon: Cpu,
+          description:
+            "Integrating generative AI, machine learning (ML), and Robotic Process Automation (RPA) to automate repetitive tasks and improve real-time decision-making.",
+          features: [
+            "Generative AI Integration",
+            "Task Automation (RPA)",
+            "Machine Learning",
+            "Smart Decisioning",
+          ],
+          color: "#6366F1",
+        },
+        {
+          name: "Data Engineering & Analytics",
+          icon: Database,
+          description:
+            "Centralizing fragmented data into cloud 'lakehouses' and using business intelligence (BI) tools to uncover actionable market trends and operational gaps.",
+          features: [
+            "Data Lakehouses",
+            "Fragmented Data Unification",
+            "Trend Analysis",
+            "Operational Insights",
+          ],
+          color: "#8B5CF6",
+        },
+      ],
+    },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
 
-  const categoryVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15,
-        duration: 0.8,
-      },
-    },
-  };
-
-  const serviceVariants = {
-    hidden: { opacity: 0, x: -20, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 150,
-        damping: 12,
-      },
-    },
-  };
 
   return (
     <div
@@ -648,24 +711,19 @@ const Solutions = () => {
         </motion.div>
 
         {/* Service Categories */}
-        <motion.div
-          className="space-y-16"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
+        <div className="space-y-16">
           {serviceCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
               className="glass-card p-8 md:p-12 rounded-3xl border border-white/10 backdrop-blur-lg bg-white/5 hover:border-white/20 hover:bg-white/8 transition-all duration-500"
-              variants={categoryVariants}
             >
               {/* Category Header */}
-              <motion.div
+              <div
                 className="flex items-center mb-8"
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: categoryIndex * 0.1 + 0.5, duration: 0.6 }}
               >
                 <div className="relative mr-6">
                   <div
@@ -696,6 +754,7 @@ const Solutions = () => {
 
                 <div>
                   <h2
+                    id={category.id}
                     className="text-3xl md:text-4xl font-cute"
                     style={{
                       background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)`,
@@ -708,31 +767,20 @@ const Solutions = () => {
                     {category.title}
                   </h2>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Services Grid */}
-              <motion.div
+              <div
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-                variants={containerVariants}
               >
                 {category.services.map((service, serviceIndex) => (
-                  <motion.div
+                  <div
                     key={service.name}
                     className="group relative p-6 rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/20"
-                    variants={serviceVariants}
-                    whileHover={{ scale: 1.02 }}
                   >
                     {/* Service Icon */}
-                    <motion.div
+                    <div
                       className="flex items-center mb-4"
-                      whileHover={{
-                        scale: 1.05,
-                        transition: {
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 10,
-                        },
-                      }}
                     >
                       <div
                         className="w-12 h-12 rounded-xl p-3 mr-4"
@@ -759,7 +807,7 @@ const Solutions = () => {
                       >
                         {service.name}
                       </h3>
-                    </motion.div>
+                    </div>
 
                     {/* Service Description */}
                     <p
@@ -775,35 +823,21 @@ const Solutions = () => {
                     {/* Features List */}
                     <div className="space-y-2">
                       {service.features.map((feature, featureIndex) => (
-                        <motion.div
+                        <div
                           key={feature}
                           className="flex items-center text-xs opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                           style={{ color: "#E2E8F0" }}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 0.8, x: 0 }}
-                          transition={{
-                            delay:
-                              categoryIndex * 0.1 +
-                              serviceIndex * 0.05 +
-                              featureIndex * 0.02,
-                          }}
                         >
                           <Zap
                             className="w-3 h-3 mr-2"
                             style={{ color: service.color }}
                           />
                           {feature}
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
 
-                    {/* Hover Effect Arrow */}
-                    <motion.div
-                      className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      whileHover={{ x: 5 }}
-                    >
-                      <ArrowRight className="w-4 h-4 text-white/50" />
-                    </motion.div>
+
 
                     {/* Gradient Border Effect */}
                     <div
@@ -813,15 +847,15 @@ const Solutions = () => {
                         border: `1px solid ${service.color}30`,
                       }}
                     />
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Call to Action */}
-        <motion.div
+        {/* <motion.div
           className="text-center mt-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -868,7 +902,7 @@ const Solutions = () => {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </motion.button>
           </motion.div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </div>
   );

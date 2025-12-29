@@ -101,7 +101,7 @@ const Contact = () => {
           {/* DSGCS Logo Background */}
           <div className="absolute top-1/2 right-8 transform -translate-y-1/2 opacity-10">
             <img
-              src="/images/dsgcs.png"
+              src="/images/DSGCS16.png"
               alt="DSGCS Logo"
               className="w-80 h-80 md:w-[500px] md:h-[500px] object-contain"
             />

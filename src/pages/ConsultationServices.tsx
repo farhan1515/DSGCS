@@ -470,7 +470,7 @@ const ConsultationServices = () => {
     },
     {
       id: "infrastructure",
-      title: "Infrastructure Security Services",
+      title: "Infrastructure Security",
       icon: Building,
       gradient: "from-emerald-400 via-teal-500 to-cyan-600",
       borderGradient: "from-emerald-400/50 via-teal-500/50 to-cyan-600/50",
@@ -608,45 +608,7 @@ const ConsultationServices = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
 
-  const categoryVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15,
-        duration: 0.8,
-      },
-    },
-  };
-
-  const serviceVariants = {
-    hidden: { opacity: 0, x: -20, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 150,
-        damping: 12,
-      },
-    },
-  };
 
   return (
     <div
@@ -740,24 +702,19 @@ const ConsultationServices = () => {
         </motion.div>
 
         {/* Service Categories */}
-        <motion.div
-          className="space-y-16"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
+        <div className="space-y-16">
           {serviceCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
               className="glass-card p-8 md:p-12 rounded-3xl border border-white/10 backdrop-blur-lg bg-white/5 hover:border-white/20 hover:bg-white/8 transition-all duration-500"
-              variants={categoryVariants}
             >
               {/* Category Header */}
-              <motion.div
+              <div
                 className="flex items-center mb-8"
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: categoryIndex * 0.1 + 0.5, duration: 0.6 }}
               >
                 <div className="relative mr-6">
                   <div
@@ -794,6 +751,7 @@ const ConsultationServices = () => {
 
                 <div>
                   <h2
+                    id={category.id}
                     className="text-3xl md:text-4xl font-cute"
                     style={{
                       background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)`,
@@ -806,31 +764,20 @@ const ConsultationServices = () => {
                     {category.title}
                   </h2>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Services Grid */}
-              <motion.div
+              <div
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-                variants={containerVariants}
               >
                 {category.services.map((service, serviceIndex) => (
-                  <motion.div
+                  <div
                     key={service.name}
                     className="group relative p-6 rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/20"
-                    variants={serviceVariants}
-                    whileHover={{ scale: 1.02 }}
                   >
                     {/* Service Icon */}
-                    <motion.div
+                    <div
                       className="flex items-center mb-4"
-                      whileHover={{
-                        scale: 1.05,
-                        transition: {
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 10,
-                        },
-                      }}
                     >
                       <div
                         className="w-12 h-12 rounded-xl p-3 mr-4"
@@ -845,7 +792,7 @@ const ConsultationServices = () => {
                           style={{ color: service.color }}
                         />
                       </div>
-                    </motion.div>
+                    </div>
 
                     <h3
                       className="text-lg font-cute mb-3"
@@ -874,35 +821,21 @@ const ConsultationServices = () => {
                     {/* Features List */}
                     <div className="space-y-2">
                       {service.features.map((feature, featureIndex) => (
-                        <motion.div
+                        <div
                           key={feature}
                           className="flex items-center text-xs opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                           style={{ color: "#E2E8F0" }}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 0.8, x: 0 }}
-                          transition={{
-                            delay:
-                              categoryIndex * 0.1 +
-                              serviceIndex * 0.05 +
-                              featureIndex * 0.02,
-                          }}
                         >
                           <Zap
                             className="w-3 h-3 mr-2"
                             style={{ color: service.color }}
                           />
                           {feature}
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
 
-                    {/* Hover Effect Arrow */}
-                    <motion.div
-                      className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      whileHover={{ x: 5 }}
-                    >
-                      <ArrowRight className="w-4 h-4 text-white/50" />
-                    </motion.div>
+
 
                     {/* Gradient Border Effect */}
                     <div
@@ -912,15 +845,15 @@ const ConsultationServices = () => {
                         border: `1px solid ${service.color}30`,
                       }}
                     />
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Call to Action */}
-        <motion.div
+        {/* <motion.div
           className="text-center mt-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -967,7 +900,7 @@ const ConsultationServices = () => {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </motion.button>
           </motion.div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </div>
   );

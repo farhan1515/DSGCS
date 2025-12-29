@@ -167,50 +167,7 @@ const CybersecurityAcademy = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
 
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 60,
-      scale: 0.8,
-      rotateY: -15,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotateY: 0,
-      transition: {
-        type: "spring" as const,
-        stiffness: 120,
-        damping: 12,
-        duration: 0.8,
-      },
-    },
-  };
-
-  const iconVariants = {
-    rest: { scale: 1, rotate: 0 },
-    hover: {
-      scale: 1.1,
-      rotate: 5,
-      transition: {
-        type: "spring" as const,
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-  };
 
   return (
     <div
@@ -321,17 +278,15 @@ const CybersecurityAcademy = () => {
         </motion.div>
 
         {/* Academy Services Grid */}
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {academyServices.map((service, index) => (
             <motion.div
               key={service.name}
               className="group relative"
-              variants={cardVariants}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
             >
               <div className="relative h-full p-8 rounded-3xl backdrop-blur-lg bg-white/5 border border-white/10 transition-all duration-500 group-hover:border-white/30 group-hover:bg-white/10 group-hover:shadow-2xl group-hover:shadow-white/20 group-hover:-translate-y-3">
                 {/* Gradient Border on Hover */}
@@ -344,11 +299,8 @@ const CybersecurityAcademy = () => {
                 />
 
                 {/* Service Header */}
-                <motion.div
+                <div
                   className="relative mb-6 flex flex-col items-center text-center"
-                  variants={iconVariants}
-                  initial="rest"
-                  whileHover="hover"
                 >
                   <service.icon
                     className="w-16 h-16 mb-4"
@@ -369,7 +321,7 @@ const CybersecurityAcademy = () => {
                   >
                     {service.name}
                   </h3>
-                </motion.div>
+                </div>
 
                 {/* Service Info */}
                 <div className="space-y-4 mb-6">
@@ -433,20 +385,17 @@ const CybersecurityAcademy = () => {
                 {/* Features List */}
                 <div className="space-y-2 mb-6">
                   {service.features.map((feature, featureIndex) => (
-                    <motion.div
+                    <div
                       key={feature}
                       className="flex items-center text-xs opacity-75 group-hover:opacity-100 transition-opacity duration-300"
                       style={{ color: "#E2E8F0" }}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 0.75, x: 0 }}
-                      transition={{ delay: index * 0.1 + featureIndex * 0.05 }}
                     >
                       <Zap
                         className="w-3 h-3 mr-2"
                         style={{ color: service.color }}
                       />
                       {feature}
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -459,7 +408,8 @@ const CybersecurityAcademy = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+
+        </div>
 
         {/* Why Choose Our Academy Section - simplified */}
         <motion.div

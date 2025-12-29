@@ -227,13 +227,13 @@ const Navbar = () => {
               className="flex items-center gap-2 sm:gap-3 flex-shrink-0"
             >
               <div
-                className="relative overflow-hidden"
-                style={{ width: "70px", height: "80px" }}
+                className="relative overflow-hidden rounded-full"
+                style={{ width: "70px", height: "70px" }}
               >
                 <motion.img
-                  src="/images/dsgcs.png"
+                  src="/images/DSGCS16.png"
                   alt="DSGCS Logo"
-                  className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
+                  className="w-full h-full object-cover shadow-lg"
                   animate={{
                     rotateY: [0, 360],
                   }}
@@ -300,63 +300,30 @@ const Navbar = () => {
       <div className="hidden lg:flex justify-center items-center gap-6">
         {/* Logo - Independent Outside Container */}
         {/* Logo Comparison Section */}
-        <div className="flex items-center gap-4 flex-shrink-0">
-          {/* Original Logo */}
-          <Link to="/" className="flex-shrink-0">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+        {/* Logo - Independent Outside Container */}
+        <Link to="/" className="flex-shrink-0">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div
+              className="relative overflow-hidden rounded-full"
+              style={{ width: "120px", height: "120px" }}
             >
-              <div
-                className="relative overflow-hidden"
-                style={{ width: "120px", height: "120px" }}
-              >
-                <motion.img
-                  src="/images/dsgcs.png"
-                  alt="DSGCS Logo"
-                  className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
-                  animate={{
-                    rotateY: [0, 360],
-                  }}
-                  transition={{
-                    rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
-                  }}
-                />
-              </div>
-            </motion.div>
-          </Link>
-
-          {/* New Variants for Comparison */}
-          {/* {["DSGCS10", "DSGCSEX"].map((img, index) => (
-            <div key={index} className="flex-shrink-0">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div
-                  className="relative overflow-hidden"
-                  style={{ width: "120px", height: "120px" }}
-                >
-                  <motion.img
-                    src={`/images/${img}.png`}
-                    alt={`Comparison ${img}`}
-                    className="w-full h-full object-contain drop-shadow-lg filter brightness-110"
-                    animate={{
-                      rotateY: [0, 360],
-                    }}
-                    transition={{
-                      rotateY: {
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "linear",
-                      },
-                    }}
-                  />
-                </div>
-              </motion.div>
+              <motion.img
+                src="/images/DSGCS16.png"
+                alt="DSGCS Logo"
+                className="w-full h-full object-cover shadow-lg"
+                animate={{
+                  rotateY: [0, 360],
+                }}
+                transition={{
+                  rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+                }}
+              />
             </div>
-          ))} */}
-        </div>
+          </motion.div>
+        </Link>
 
         {/* Main Navbar Container - Company Name + Nav Items */}
         <div

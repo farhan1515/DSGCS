@@ -37,7 +37,7 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <motion.img
-              src="/images/dsgcs.png"
+              src="/images/DSGCS16.png"
               alt="DSGCS Logo"
               className="w-24 h-26 object-contain drop-shadow-lg filter brightness-110"
               animate={{
