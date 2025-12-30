@@ -292,7 +292,7 @@ const OrbitingCirclesDemo: React.FC = () => {
 
   return (
     <div className="relative flex h-full w-full items-center justify-center overflow-visible">
-      <div className="relative rounded-full p-5 md:p-6 w-[160px] h-[160px] md:w-[200px] md:h-[200px]">
+      <div className="relative rounded-full p-2 w-[80px] h-[80px] md:w-[120px] md:h-[120px]">
         <motion.img
           src="/images/DSGCS16.png"
           alt="DSGCS Logo"
