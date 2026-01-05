@@ -78,12 +78,7 @@ const CompanyIntro = () => {
               }}
               variants={fadeInVariants}
             >
-              stands as a premier cybersecurity company based in Riyadh, Saudi
-              Arabia, committed to securing digital landscapes with cutting-edge
-              solutions. With a rich legacy of safeguarding critical assets,
-              Digital Security Gateway Consulting Services (DSGCS) is renowned
-              for its expertise, innovative approach, and unwavering commitment
-              to cybersecurity excellence.
+              A leading cybersecurity firm headquartered in Riyadh, Saudi Arabia, dedicated to protecting digital environments through advanced security solutions. With a strong track record in defending critical assets, Digital Security Gateway Consulting Services (DSGCS) is recognized for its deep expertise, forward-thinking innovation, and steadfast dedication to cybersecurity excellence.
             </motion.p>
           </motion.div>
 
@@ -127,7 +122,7 @@ const CompanyIntro = () => {
               }}
               variants={fadeInVariants}
             >
-              Our Care Statement
+              Our Core Statement
             </motion.h3>
 
             <motion.div
@@ -141,17 +136,11 @@ const CompanyIntro = () => {
               variants={staggerContainer}
             >
               <motion.p variants={fadeInVariants}>
-                At Digital Security Gateway Consulting Services (DSGCS), we
-                prioritize the security and peace of mind of our customers. Our
-                dedicated team of experts is committed to providing cutting-edge
-                cybersecurity solutions tailored to meet your unique needs.
+                At Digital Security Gateway Consulting Services (DSGCS), safeguarding our clients' digital assets and ensuring operational confidence are at the core of our mission. Our team of highly skilled cybersecurity professionals delivers advanced, customized security solutions aligned with each organization's specific requirements.
               </motion.p>
 
               <motion.p variants={fadeInVariants}>
-                We strive to build long-lasting relationships based on trust,
-                integrity, and excellence in service. By staying ahead of
-                emerging threats and continuously enhancing our offerings, we
-                ensure that your organization remains protected and resilient.
+                We are committed to fostering long-term partnerships founded on trust, integrity, and service excellence. Through proactive threat intelligence, continuous innovation, and ongoing enhancement of our capabilities, we help organizations maintain a strong, resilient, and secure cybersecurity posture.
               </motion.p>
 
               <motion.p
